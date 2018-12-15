@@ -1,0 +1,19 @@
+[submodule ".vim/pack/plugins/start/vim-tmux-navigator"]
+	path = .vim/pack/plugins/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule ".vim/pack/plugins/opt/black"]
+	path = .vim/pack/plugins/opt/black
+	url = https://github.com/ambv/black.git
+[submodule "/Users/cdg4/.fzf"]
+	path = /Users/cdg4/.fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule ".vim/pack/plugins/start/LanguageClient-neovim"]
+	path = .vim/pack/plugins/start/LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim.git
+	branch = next
+[submodule ".vim/pack/plugins/opt/gruvbox"]
+	path = .vim/pack/plugins/opt/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule ".vim/pack/plugins/start/SimpylFold"]
+	path = .vim/pack/plugins/start/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git
