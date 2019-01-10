@@ -1,0 +1,38 @@
+#!/bin/bash
+set -ex
+
+# Usage: drop this script in a folder that's on your path, I use ~/bin.
+# Then make it executable: chmod +x ~/bin/remotejupyter
+# Now you can start a jupyter notebook on any server that has jupyter lab
+# and tmux installed, using the following syntax:
+#
+#  remotejupyter username@server
+#
+# For example, I use "remotejupyter cdg4@scotty.princeton.edu"
+
+# SSH alias of the server on which you want to run the Jupyter notebook
+SERVER_ALIAS=$1
+
+# Choose a random port in the range [8000, 1000]
+JUPYTERLAB_PORT=$(($RANDOM % 2000 + 8000))
+
+SSH_OPTIONS="-o ControlMaster=auto -o ControlPath=$TMPDIR%r@%h-%p \
+-o ControlPersist=600"
+
+# Start ssh master connection
+ssh $SSH_OPTIONS -fN $SERVER_ALIAS
+
+# Spin up jupyter lab in a remote tmux session, in the background
+UNIQUE_SESSION_NAME="jupyterlab-$(uuidgen)"
+ssh $SSH_OPTIONS -t -t -f $SERVER_ALIAS "\
+tmux -v new -d -s \"$UNIQUE_SESSION_NAME\" \
+\"jupyter lab --port=$JUPYTERLAB_PORT\""
+
+# Establish ssh tunnel
+ssh $SSH_OPTIONS -L $JUPYTERLAB_PORT:localhost:$JUPYTERLAB_PORT $SERVER_ALIAS &
+
+# Log back in to the tmux session with the running jupyter notebook
+ssh $SSH_OPTIONS -t $SERVER_ALIAS "tmux attach -t $UNIQUE_SESSION_NAME"
+
+# Clean up the control master connection and all slaves
+ssh $SSH_OPTIONS -O exit $SERVER_ALIAS
