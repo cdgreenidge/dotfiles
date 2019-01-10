@@ -17,7 +17,7 @@ precmd () {
     fi
 
     __git_ps1 "
-%{$fg[yellow]%}%m%{$reset_color%}: %~" "$CONDA_PROMPT
+%{$fg[yellow]%}%m%{$reset_color%}: %~" " $CONDA_PROMPT
 $ " " (%s) "
 }
 
@@ -55,7 +55,7 @@ export PATH=~/bin:$PATH
 # Aliases
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias g="git"
-alias py="python"
+alias py="python3"
 alias scotty="ssh scotty -t /mnt/sink/scratch/cdg4/linuxbrew/bin/zsh"
 alias scottyjupyter="remotejupyter cdg4@scotty.princeton.edu"
 alias v="vim"
