@@ -4,8 +4,8 @@
 [submodule ".vim/pack/plugins/opt/black"]
 	path = .vim/pack/plugins/opt/black
 	url = https://github.com/ambv/black.git
-[submodule "/Users/cdg4/.fzf"]
-	path = /Users/cdg4/.fzf
+[submodule ".fzf"]
+	path = .fzf
 	url = https://github.com/junegunn/fzf.git
 [submodule ".vim/pack/plugins/start/LanguageClient-neovim"]
 	path = .vim/pack/plugins/start/LanguageClient-neovim
@@ -17,6 +17,3 @@
 [submodule ".vim/pack/plugins/start/SimpylFold"]
 	path = .vim/pack/plugins/start/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
-[submodule "/usr/people/cdg4/.fzf"]
-	path = /usr/people/cdg4/.fzf
-	url = https://github.com/junegunn/fzf.git

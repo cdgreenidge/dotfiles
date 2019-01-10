@@ -25,7 +25,7 @@ ssh $SSH_OPTIONS -fN $SERVER_ALIAS
 # Spin up jupyter lab in a remote tmux session, in the background
 UNIQUE_SESSION_NAME="jupyterlab-$(uuidgen)"
 ssh $SSH_OPTIONS -t -t -f $SERVER_ALIAS "\
-tmux -v new -d -s \"$UNIQUE_SESSION_NAME\" \
+tmux new -d -s \"$UNIQUE_SESSION_NAME\" \
 \"jupyter lab --port=$JUPYTERLAB_PORT\""
 
 # Establish ssh tunnel

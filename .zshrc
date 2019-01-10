@@ -57,6 +57,7 @@ alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias g="git"
 alias py="python"
 alias scotty="ssh scotty -t /mnt/sink/scratch/cdg4/linuxbrew/bin/zsh"
+alias scottyjupyter="remotejupyter cdg4@scotty.princeton.edu"
 alias v="vim"
 
 # Fasd aliases
