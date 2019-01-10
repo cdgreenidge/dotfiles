@@ -17,3 +17,6 @@
 [submodule ".vim/pack/plugins/start/SimpylFold"]
 	path = .vim/pack/plugins/start/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "/usr/people/cdg4/.fzf"]
+	path = /usr/people/cdg4/.fzf
+	url = https://github.com/junegunn/fzf.git

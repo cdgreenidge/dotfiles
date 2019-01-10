@@ -8,9 +8,18 @@ export GIT_PS1_SHOWCOLORHINTS=true
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_STATESEPARATOR=""
-precmd () { __git_ps1 "
-%{$fg[yellow]%}%m%{$reset_color%}: %~" "
-$ " " (%s)"}
+
+precmd () {
+    if [ -z "$CONDA_DEFAULT_ENV" ]; then
+        CONDA_PROMPT=""
+    else
+        CONDA_PROMPT="[%{$fg[green]%]$CONDA_DEFAULT_ENV%{$reset_color%}]"
+    fi
+
+    __git_ps1 "
+%{$fg[yellow]%}%m%{$reset_color%}: %~" "$CONDA_PROMPT
+$ " " (%s) "
+}
 
 # Enable completion
 fpath=(~/bin/completions $fpath)
@@ -39,6 +48,9 @@ eval "$(fasd --init auto)"
 # Make directory navigation more pleasant
 setopt autopushd
 alias dirs="dirs -v"
+
+# Add home bin directory
+export PATH=~/bin:$PATH
 
 # Aliases
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
