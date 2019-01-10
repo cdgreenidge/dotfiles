@@ -44,6 +44,7 @@ alias dirs="dirs -v"
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias g="git"
 alias py="python"
+alias scotty="ssh scotty -t /mnt/sink/scratch/cdg4/linuxbrew/bin/zsh"
 alias v="vim"
 
 # Fasd aliases
