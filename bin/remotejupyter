@@ -1,5 +1,4 @@
 #!/bin/bash
-set -ex
 
 # Installation:
 #
@@ -18,32 +17,36 @@ set -ex
 
 # SSH alias of the server on which you want to run the Jupyter notebook
 SERVER_ALIAS=$1
+echo "Connecting to $SERVER_ALIAS"
 
 # Enable ssh multiplexing
 SSH_OPTIONS="-o ControlMaster=auto -o ControlPath=$TMPDIR%r@%h-%p \
 -o ControlPersist=600"
 
+echo "Starting ssh master connection"
 # Start ssh master connection
 ssh $SSH_OPTIONS -fN $SERVER_ALIAS
 
-# Find an unused port on the remote server
+echo "Searching for unused port on remote server"
 JUPYTERLAB_PORT=$(ssh $SSH_OPTIONS $SERVER_ALIAS "\
 JUPYTERLAB_PORT=8888;\
 until [ -z \"\$(netstat -atn | grep 127.0.0.1.\$JUPYTERLAB_PORT)\" ]; do\
     JUPYTERLAB_PORT=\$((JUPYTERLAB_PORT + 1));\
 done;\
 echo \$JUPYTERLAB_PORT")
+echo "Using port $JUPYTERLAB_PORT"
 
-# Spin up Jupyter Lab in a background tmux session on the remote server
+echo "Starting jupyter lab session on remote server"
 UNIQUE_SESSION_NAME="jupyterlab-$(uuidgen)"
 ssh $SSH_OPTIONS -t -t -f $SERVER_ALIAS "\
 tmux new -d -s \"$UNIQUE_SESSION_NAME\" \"jupyter lab --port=$JUPYTERLAB_PORT\""
+@echo "Established session $UNIQUE_SESSION_NAME"
 
-# Establish an ssh tunnel
+echo "Starting ssh tunnel"
 ssh $SSH_OPTIONS -L $JUPYTERLAB_PORT:localhost:$JUPYTERLAB_PORT $SERVER_ALIAS &
 
-# Log in to the remote server's tmux session
+echo "Logging in to remote server"
 ssh $SSH_OPTIONS -t $SERVER_ALIAS "tmux attach -t $UNIQUE_SESSION_NAME"
 
-# Clean up the control master connection and all slaves
+echo "Cleaning up ssh master connection and all slaves"
 ssh $SSH_OPTIONS -O exit $SERVER_ALIAS
