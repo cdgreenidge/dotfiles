@@ -58,10 +58,10 @@ alias g="git"
 alias ls="ls --color"
 alias py="python3"
 alias scotty="TERM=xterm-256color \
+ssh scotty -t /usr/people/cdg4/.linuxbrew/bin/zsh"
 alias scottyjupyter="TERM=xterm-256color remotejupyter cdg4@scotty.princeton.edu"
 alias ssh="TERM=xterm-256color ssh"
 alias v="vim"
-ssh scotty -t /usr/people/cdg4/.linuxbrew/bin/zsh"
 
 # Fasd aliases
 alias a="fasd -a"        # any
