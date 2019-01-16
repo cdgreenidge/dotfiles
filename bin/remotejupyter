@@ -17,6 +17,13 @@
 
 # SSH alias of the server on which you want to run the Jupyter notebook
 SERVER_ALIAS=$1
+
+if [ -z $SERVER_ALIAS ]; then
+    echo "    Usage: remotejupyter username@server"
+    echo "    Make sure that \"jupyter lab\" and \"tmux\" are installed on the server"
+    exit
+fi
+
 echo "Connecting to $SERVER_ALIAS"
 
 # Enable ssh multiplexing
@@ -38,15 +45,24 @@ echo "Using port $JUPYTERLAB_PORT"
 
 echo "Starting jupyter lab session on remote server"
 UNIQUE_SESSION_NAME="jupyterlab-$(uuidgen)"
-ssh $SSH_OPTIONS -t -t -f $SERVER_ALIAS "\
+ssh $SSH_OPTIONS -T -f $SERVER_ALIAS "\
 tmux new -d -s \"$UNIQUE_SESSION_NAME\" \"jupyter lab --port=$JUPYTERLAB_PORT\""
-@echo "Established session $UNIQUE_SESSION_NAME"
+echo "Established session $UNIQUE_SESSION_NAME"
 
 echo "Starting ssh tunnel"
 ssh $SSH_OPTIONS -L $JUPYTERLAB_PORT:localhost:$JUPYTERLAB_PORT $SERVER_ALIAS &
 
 echo "Logging in to remote server"
-ssh $SSH_OPTIONS -t $SERVER_ALIAS "tmux attach -t $UNIQUE_SESSION_NAME"
+ssh $SSH_OPTIONS $SERVER_ALIAS -tt "tmux attach -t $UNIQUE_SESSION_NAME"
+
+TMUX_SESSIONS=$(
+    ssh $SSH_OPTIONS $SERVER_ALIAS "tmux list-sessions" | grep --color=never jupyterlab
+)
+if [ ! -z "$TMUX_SESSIONS" ]; then
+    echo "WARNING: The following tmux sessions are still alive:"
+    echo "$TMUX_SESSIONS"
+    echo "You might need to log in and clean these up manually"
+fi
 
 echo "Cleaning up ssh master connection and all slaves"
 ssh $SSH_OPTIONS -O exit $SERVER_ALIAS
