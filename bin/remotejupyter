@@ -15,7 +15,6 @@
 #
 # Author: Daniel Greenidge <daniel@danielgreenidge.com>
 
-# SSH alias of the server on which you want to run the Jupyter notebook
 SERVER_ALIAS=$1
 
 if [ -z $SERVER_ALIAS ]; then
@@ -31,7 +30,6 @@ SSH_OPTIONS="-o ControlMaster=auto -o ControlPath=$TMPDIR%r@%h-%p \
 -o ControlPersist=600"
 
 echo "Starting ssh master connection"
-# Start ssh master connection
 ssh $SSH_OPTIONS -fN $SERVER_ALIAS
 
 echo "Searching for unused port on remote server"
