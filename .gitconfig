@@ -33,7 +33,7 @@
 [user]
 	name = Daniel Greenidge
 	email = dev@danielgreenidge.com
-	signingkey = D148D4BF909BAB8B
+	signingkey = 5E54080AF79A4FEF
 [core]
  	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = vim
