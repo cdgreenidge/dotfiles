@@ -55,7 +55,6 @@ export PATH=~/bin:$PATH
 # Aliases
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias g="git"
-alias ls="ls --color"
 alias py="python3"
 alias scotty="TERM=xterm-256color \
 ssh scotty -t /usr/people/cdg4/.linuxbrew/bin/zsh"
