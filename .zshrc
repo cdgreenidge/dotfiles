@@ -10,10 +10,10 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_STATESEPARATOR=""
 
 precmd () {
-    if [ -z "$CONDA_DEFAULT_ENV" ]; then
+    if [ -z "$VIRTUAL_ENV" ]; then
         CONDA_PROMPT=""
     else
-        CONDA_PROMPT="[%{$fg[green]%]$CONDA_DEFAULT_ENV%{$reset_color%}]"
+        CONDA_PROMPT="[%{$fg[green]%]$(basename $VIRTUAL_ENV)%{$reset_color%}]"
     fi
 
     __git_ps1 "

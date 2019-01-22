@@ -17,3 +17,6 @@
 [submodule ".vim/pack/plugins/start/SimpylFold"]
 	path = .vim/pack/plugins/start/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule ".vim/pack/plugins/start/vim-toml"]
+	path = .vim/pack/plugins/start/vim-toml
+	url = git@github.com:cespare/vim-toml.git
