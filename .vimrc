@@ -36,15 +36,26 @@ let mapleader=" "
 let maplocalleader="\\"
 noremap <leader>f :FZF<cr>
 nnoremap <silent> <leader>l :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> <leader>y :call LanguageClient#textDocument_formatting()<CR>
 nnoremap <silent> <leader>h :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <leader>d :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>m :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>m :Dispatch make <CR>
+nnoremap <leader>t :Dispatch make test <CR>
+nnoremap <leader>tt :TestNearest<CR>
+nnoremap <leader>tf :TestFile<CR>
+nnoremap <leader>ts :TestSuite<CR>
+nnoremap <leader>tl :TestLast<CR>
+nnoremap <leader>tv :TestVisit<CR>
 
 " Language server configuration
 set hidden
 let g:LanguageClient_serverCommands = {
     \ "python": ["pyls"],
     \ }
+
+" Vim-test configuration
+let test#strategy = "dispatch"
 
 " Trim whitespace on save
 fun! TrimWhiteSpace()
