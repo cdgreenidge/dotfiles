@@ -24,6 +24,8 @@ scotty() {
     unset __conda_setup
     # <<< conda initialize <<<
 
+    emacs --daemon > /dev/null 2>&1 &
+
     # Source system bashrc
     if [ -f /etc/bashrc ]; then
 	    . /etc/bashrc
@@ -38,4 +40,3 @@ scotty() {
 if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
     scotty
 fi
-

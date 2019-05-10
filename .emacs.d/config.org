@@ -25,6 +25,7 @@ Make sure our path is the same as the shell's on MacOS:
 #+BEGIN_SRC emacs-lisp
   (use-package exec-path-from-shell
     :ensure t
+    :if (memq window-system '(mac ns))
     :init
     (exec-path-from-shell-initialize)
     (exec-path-from-shell-copy-env "WORKON_HOME"))
@@ -67,7 +68,13 @@ Use some good-looking color themes:
   (use-package doom-themes
     :ensure t
     :config
-    (load-theme 'doom-opera t))
+    ; (load-theme 'doom-opera t)
+    )
+
+  (use-package gruvbox-theme
+    :ensure t
+    :config
+    (load-theme 'gruvbox-light-medium t))
 #+END_SRC
 
 Use a fancy font:

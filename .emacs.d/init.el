@@ -44,9 +44,10 @@
  '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
+ '(objed-cursor-color "#C16069")
  '(package-selected-packages
    (quote
-    (python-pytest yaml-mode auctex flycheck-swift format-all swift-mode blacken which-key use-package solarized-theme ripgrep rg pyvenv py-yapf py-isort projectile magit lsp-ui git-gutter flycheck-pycheckers exec-path-from-shell doom-themes diminish counsel company-lsp ace-window)))
+    (gruvbox-theme python-pytest yaml-mode auctex flycheck-swift format-all swift-mode blacken which-key use-package solarized-theme ripgrep rg pyvenv py-yapf py-isort projectile magit lsp-ui git-gutter flycheck-pycheckers exec-path-from-shell doom-themes diminish counsel company-lsp ace-window)))
  '(vc-annotate-background "#fafafa")
  '(vc-annotate-color-map
    (list
