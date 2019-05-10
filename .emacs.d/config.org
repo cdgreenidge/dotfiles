@@ -1,0 +1,338 @@
+* My Emacs Config
+
+This is a good place to look for inspiration:
+
+https://github.com/danielmai/.emacs.d/blob/master/config.org
+
+** Essential settings
+
+Map modifier keys on MacOS:
+
+#+BEGIN_SRC emacs-lisp
+  (setq mac-command-modifier 'control)
+  (setq mac-control-modifier 'hyper)
+#+END_SRC
+
+Keep all backup and auto-save files in one directory:
+
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+#+END_SRC
+
+Make sure our path is the same as the shell's on MacOS:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package exec-path-from-shell
+    :ensure t
+    :init
+    (exec-path-from-shell-initialize)
+    (exec-path-from-shell-copy-env "WORKON_HOME"))
+#+END_SRC
+
+Warn us when our lines are long:
+
+#+BEGIN_SRC emacs-lisp
+  (require 'whitespace)
+  (setq whitespace-line-column 89)
+  (setq whitespace-style '(face empty tabs lines-tail trailing))
+  (global-whitespace-mode t)
+#+END_SRC
+
+Map the shell to an easy shortcut:
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c s") 'shell)
+#+END_SRC
+
+Tell shells we are in Emacs;
+
+#+BEGIN_SRC emacs-lisp
+  (setenv "EMACS" "true")
+#+END_SRC
+
+** Aesthetics
+
+Use some good-looking color themes:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package solarized-theme
+    :ensure t
+    :init
+    (setq solarized-use-variable-pitch nil)
+    (setq solarized-use-more-italic t)
+    ; (load-theme 'solarized-light t)
+    )
+
+  (use-package doom-themes
+    :ensure t
+    :config
+    (load-theme 'doom-opera t))
+#+END_SRC
+
+Use a fancy font:
+
+#+BEGIN_SRC emacs-lisp
+  (set-frame-font "Input Mono-13")
+#+END_SRC
+
+** Completion and movement
+
+Use Ivy for completion and Swiper for search:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel  ; Brings in Ivy and Swiper as dependencies
+    :ensure t
+    :demand
+    :diminish (ivy-mode . "")
+    :diminish (counsel-mode . "")
+    :config
+    (ivy-mode 1)
+    (counsel-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-count-format "(%d%d) ")
+    :bind (("C-s" . swiper)))
+#+END_SRC
+
+Use Projectile for searching through projects:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :diminish (projectile-mode . "")
+    :config
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (setq projectile-completion-system 'ivy)
+    (setq projectile-git-command "rg --files -0 .")
+    (setq projectile-generic-command "rg --files -0 .")
+    (projectile-mode 1))
+#+END_SRC
+
+Find out what keys do!
+
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :diminish (which-key-mode . "")
+    :config
+    (which-key-mode 1))
+#+END_SRC
+
+Undo destructive window changes easily with winner mode:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package winner
+    :config
+    (winner-mode t)
+    :bind (("C-<left>" . winner-undo) ("C-<right>" . winner-redo)))
+#+END_SRC
+
+Jump around window changes easily with ace-window:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :bind (("C-x o" . 'ace-window))
+    :config
+    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+#+END_SRC
+
+Jump around buffers easily with Avy:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind (("C-;" . 'avy-goto-char) ("C-:" . 'avy-goto-char-2)))
+#+END_SRC
+
+** Git
+
+Use Magit, from whence all git flows:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind (("C-c g" . magit-status)))
+#+END_SRC
+
+Show diffs in the gutter:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package git-gutter
+    :ensure t
+    :diminish (git-gutter-mode . "")
+    :config
+    (global-git-gutter-mode 1))
+#+END_SRC
+
+Run Magit status in full screen (stolen from Magnar Sven):
+
+#+BEGIN_SRC emacs-lisp
+  ;; full screen magit-status
+  (defadvice magit-status (around magit-fullscreen activate)
+    (window-configuration-to-register :magit-fullscreen)
+    ad-do-it
+    (delete-other-windows))
+
+  (defun magit-quit-session ()
+    "Restores the previous window configuration and kills the magit buffer"
+    (interactive)
+    (kill-buffer)
+    (jump-to-register :magit-fullscreen))
+#+END_SRC
+
+** Linting
+Use Flycheck. Currently disabled in favor of LSP because Flycheck causes some problems.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (global-flycheck-mode))
+#+END_SRC
+
+** Programming
+Search our codebase with ripgrep:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package rg
+    :ensure t)
+#+END_SRC
+
+Use the Language Server Protocol. Currently I've disabled tangling on
+this because the LSP for Python is kind of broken, and I'm fine with
+just using syntax checkers.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+  (use-package lsp-mode
+    :ensure t
+    :commands lsp
+    :init
+    ;; (add-hook 'python-mode-hook #'lsp)
+    )
+
+  (use-package lsp-ui
+    :ensure t
+    :commands lsp-ui-mode)
+
+  (use-package company-lsp
+    :ensure t
+    :commands company-lsp)
+#+END_SRC
+
+** Language server protocol
+
+Install the LSP:
+
+#+BEGIN_SRC emacs-lisp :tangle no
+  (use-package lsp-mode
+    :ensure t
+    :commands lsp)
+
+  (use-package lsp-ui
+    :ensure t
+    :commands lsp-ui-mode)
+
+  (use-package company-lsp
+    :ensure t
+    :commands company-lsp)
+#+END_SRC
+** Language-specific settings
+*** Latex
+
+Use AucTex for LaTeX.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package tex
+    :defer t
+    :ensure auctex
+    :config
+    (setq TeX-auto-save t))
+#+END_SRC
+
+*** Python
+
+Format files with Black:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package blacken
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'blacken-mode))
+#+END_SRC
+
+Sort imports with isort:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package py-isort
+    :ensure t)
+#+END_SRC
+
+Work on virtualenvs:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package pyvenv
+    :ensure t)
+#+END_SRC
+
+Allow easy testing with pytest:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package python-pytest
+    :ensure t
+    :config
+    (bind-key "C-c t" 'python-pytest-file)
+    (bind-key "C-c f" 'python-pytest-function)
+    (bind-key "C-c a" 'python-pytest))
+#+END_SRC
+Use iPython for the Python interpreter:
+
+#+BEGIN_SRC emacs-lisp
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "--simple-prompt -i")
+#+END_SRC
+
+**** TODO Integrate jupyter kernels with https://github.com/dzop/emacs-jupyter
+
+*** Swift
+
+Use swift mode.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package swift-mode
+    :ensure t
+    :config
+    (setq swift-mode:repl-executable "swift"))
+#+END_SRC
+
+Add Flycheck support. Currently disabled
+
+#+BEGIN_SRC emacs-lisp :tangle no
+  (use-package flycheck-swift
+    :ensure t
+    :after flycheck
+    :config
+    (flycheck-swift-setup))
+#+END_SRC
+
+*** YAML
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yaml-mode
+    :ensure t)
+#+END_SRC
+
+** Org Mode
+
+Make Org mode prettier:
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-startup-indented t)
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  #+END_SRC
+
+Track completions:
+
+#+BEGIN_SRC emacs-lisp
+     (setq org-log-done 'time)
+#+END_SRC
