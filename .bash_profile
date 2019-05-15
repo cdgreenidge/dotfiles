@@ -63,6 +63,9 @@ if ! emacsclient -e 0 >&/dev/null; then
    (emacs --daemon > /dev/null 2>&1 &)
 fi
 
+# Source git prompt
+source ~/bin/git-prompt.sh
+
 # Source personal bashrc
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
