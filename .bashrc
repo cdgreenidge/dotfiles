@@ -1,5 +1,6 @@
 scotty() {
     umask 002
+    alias ls="ls --color"
 }
 
 # Be colorful!
