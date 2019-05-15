@@ -58,8 +58,9 @@ if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
 fi
 
 # Start emacs daemon
-if ! emacsclient -e 0 >&/dev/null;
-    then emacs --daemon > /dev/null 2>&1 &
+if ! emacsclient -e 0 >&/dev/null; then
+   # We run in subshell to supress job ID
+   (emacs --daemon > /dev/null 2>&1 &)
 fi
 
 # Source personal bashrc
