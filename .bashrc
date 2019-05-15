@@ -29,6 +29,8 @@ scotty() {
     umask 002
     alias ls="ls --color"
 }
-if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
+if [ $HOSTNAME = "scotty.pni.Princeton.EDU" ]; then
     scotty
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

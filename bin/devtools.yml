@@ -1,0 +1,9 @@
+name: devtools
+
+channels:
+    - conda-forge
+
+dependencies:
+    - emacs
+    - tmux
+    - git

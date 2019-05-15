@@ -31,8 +31,14 @@ scotty() {
 }
 
 cucumber() {
+    # Add Rust to path
+    export PATH=$HOME/.cargo/bin:$PATH
+
     # Add custom tools to path
     export PATH=/Users/cdg4/miniconda3/envs/devtools/bin/:$PATH
+
+    # Python virtual env directory
+    export WORKON_HOME=$HOME/miniconda3/envs/
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
