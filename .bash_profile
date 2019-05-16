@@ -34,6 +34,9 @@ cucumber() {
     # Add Rust to path
     export PATH=$HOME/.cargo/bin:$PATH
 
+    # Add Julia to path
+    export PATH=/Applications/JuliaPro-1.1.0.1.app/Contents/Resources/julia/Contents/Resources/julia/bin:$PATH
+
     # Add custom tools to path
     export PATH=/Users/cdg4/miniconda3/envs/devtools/bin/:$PATH
 
