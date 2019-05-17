@@ -59,11 +59,40 @@ cucumber() {
     # <<< conda initialize <<<
 }
 
+pillow() {
+    # Add custom tools to path
+    export PATH=/Users/cdg4/miniconda3/envs/devtools/bin/:$PATH
+
+    # Add Rust to path
+    export PATH=$HOME/.cargo/bin:$PATH
+
+    # Python virtual env directory
+    export WORKON_HOME=$HOME/miniconda3/envs/
+
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+	eval "$__conda_setup"
+    else
+	if [ -f "/Users/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/cdg4/miniconda3/etc/profile.d/conda.sh"
+	else
+            export PATH="/Users/cdg4/miniconda3/bin:$PATH"
+	fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
+
 if [ $HOSTNAME == "cucumber" ]; then
     cucumber
 fi
 if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
     scotty
+fi
+if [ $HOSTNAME == "pillow-fcp2014" ]; then
+    pillow
 fi
 
 # Start emacs daemon
@@ -79,3 +108,5 @@ source ~/bin/git-prompt.sh
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

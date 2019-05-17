@@ -8,7 +8,7 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_STATESEPARATOR=""
 PROMPT_COMMAND='if [ "$CONDA_DEFAULT_ENV" = "base" ]; then CONDA_PROMPT="";
-else CONDA_PROMPT="[\e[32m$(basename $CONDA_DEFAULT_ENV)\e[0m]";
+else CONDA_PROMPT="[\e[32m$(basename "$CONDA_DEFAULT_ENV")\e[0m]";
 fi;
 __git_ps1 "
 \e[33m\h\e[0m: \w" " $CONDA_PROMPT
