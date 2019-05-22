@@ -2,8 +2,10 @@ name: devtools
 
 channels:
     - conda-forge
+    - defaults
 
 dependencies:
     - emacs
-    - tmux
     - git
+    - git-lfs
+    - tmux
