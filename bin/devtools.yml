@@ -7,5 +7,8 @@ channels:
 dependencies:
     - emacs
     - git
-    - git-lfs
+    - pip
     - tmux
+
+    - pip:
+        - dvc
