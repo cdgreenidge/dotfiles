@@ -85,6 +85,8 @@ pillow() {
     # <<< conda initialize <<<
 }
 
+export PATH=~/bin:$PATH
+
 if [ $HOSTNAME == "cucumber" ]; then
     cucumber
 fi
