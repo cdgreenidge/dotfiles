@@ -75,14 +75,15 @@ Use some good-looking color themes:
 
   (use-package doom-themes
     :ensure t
-    :config
-    ; (load-theme 'doom-opera t)
+    :init
+    (load-theme 'doom-one t)
     )
 
-  (use-package gruvbox-theme
-    :ensure t
-    :config
-    (load-theme 'gruvbox-light-medium t))
+  ;; (use-package gruvbox-theme
+  ;;   :ensure t
+  ;;   :config
+  ;;   ; (load-theme 'gruvbox-light-medium t)
+  ;;   )
 #+END_SRC
 
 Use a fancy font:
