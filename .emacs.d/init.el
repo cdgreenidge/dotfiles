@@ -39,7 +39,7 @@
    ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
  '(custom-safe-themes
    (quote
-    ("f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "10461a3c8ca61c52dfbbdedd974319b7f7fd720b091996481c8fb1dded6c6116" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "49ec957b508c7d64708b40b0273697a84d3fee4f15dd9fc4a9588016adee3dad" default)))
+    ("2a85164d198da2174a322b0fc144f3030b8368321804b08ba9c62b388258f958" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "10461a3c8ca61c52dfbbdedd974319b7f7fd720b091996481c8fb1dded6c6116" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "49ec957b508c7d64708b40b0273697a84d3fee4f15dd9fc4a9588016adee3dad" default)))
  '(fci-rule-color "#383a42")
  '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
@@ -47,7 +47,7 @@
  '(objed-cursor-color "#C16069")
  '(package-selected-packages
    (quote
-    (julia-mode gruvbox-theme python-pytest yaml-mode auctex flycheck-swift format-all swift-mode blacken which-key use-package solarized-theme ripgrep rg pyvenv py-yapf py-isort projectile magit lsp-ui git-gutter flycheck-pycheckers exec-path-from-shell doom-themes diminish counsel company-lsp ace-window)))
+    (dracula-theme julia-mode gruvbox-theme python-pytest yaml-mode auctex flycheck-swift format-all swift-mode blacken which-key use-package solarized-theme ripgrep rg pyvenv py-yapf py-isort projectile magit lsp-ui git-gutter flycheck-pycheckers exec-path-from-shell doom-themes diminish counsel company-lsp ace-window)))
  '(vc-annotate-background "#fafafa")
  '(vc-annotate-color-map
    (list
