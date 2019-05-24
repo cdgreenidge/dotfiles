@@ -9,6 +9,9 @@ scotty() {
     # Add custom tools to path
     export PATH=/scratch/cdg4/miniconda3/envs/devtools/bin/:$PATH
 
+    # Python virtualenv directory
+    export WORKON_HOME=/scratch/cdg4/miniconda3/envs
+
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     __conda_setup="$('/scratch/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
