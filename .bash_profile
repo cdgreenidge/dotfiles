@@ -96,6 +96,9 @@ fi
 if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
     scotty
 fi
+if [ $HOSTNAME == "spock.pni.Princeton.EDU" ]; then
+    scotty
+fi
 if [ $HOSTNAME == "pillow-fcp2014" ]; then
     pillow
 fi
