@@ -104,10 +104,10 @@ if [ $HOSTNAME == "pillow-fcp2014" ]; then
 fi
 
 # Start emacs daemon
-if ! emacsclient -e 0 >&/dev/null; then
-   # We run in subshell to supress job ID
-   (emacs --daemon > /dev/null 2>&1 &)
-fi
+# if ! emacsclient -e 0 >&/dev/null; then
+#    # We run in subshell to supress job ID
+#    (emacs --daemon > /dev/null 2>&1 &)
+# fi
 
 # Source git prompt
 source ~/bin/git-prompt.sh
