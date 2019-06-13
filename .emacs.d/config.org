@@ -97,6 +97,13 @@ Use a fancy font:
   (set-frame-font "Input Mono-13")
 #+END_SRC
 
+Split windows vertically by default:
+
+#+BEGIN_SRC emacs-lisp
+  (setq split-width-threshold 0)
+  (setq split-height-threshold nil)
+#+END_SRC
+
 ** Completion and movement
 
 Use Ivy for completion and Swiper for search:
@@ -271,6 +278,13 @@ Install the LSP:
 
 #+BEGIN_SRC emacs-lisp
   (use-package julia-mode
+    :ensure t)
+#+END_SRC
+
+Use an alterantive Julia repl:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package julia-repl
     :ensure t)
 #+END_SRC
 
