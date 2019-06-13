@@ -79,11 +79,16 @@ Use some good-looking color themes:
   ;;   (load-theme 'doom-dracula t)
   ;;   )
 
-  (use-package gruvbox-theme
+  ;; (use-package gruvbox-theme
+  ;;   :ensure t
+  ;;   :config
+  ;;   (load-theme 'gruvbox-light-medium t))
+
+  (use-package darktooth-theme
     :ensure t
     :config
-    (load-theme 'gruvbox-light-medium t))
-
+    (load-theme 'darktooth t)
+    (darktooth-modeline))
 #+END_SRC
 
 Use a fancy font:
@@ -158,7 +163,7 @@ Jump around buffers easily with Avy:
 #+BEGIN_SRC emacs-lisp
   (use-package avy
     :ensure t
-    :bind (("s-l" . 'avy-goto-char) ("s-L" . 'avy-goto-char-2)))
+    :bind (("C-;" . 'avy-goto-char) ("C-:" . 'avy-goto-char-2)))
 #+END_SRC
 
 ** Git
@@ -205,6 +210,14 @@ Use Flycheck. Currently disabled in favor of LSP because Flycheck causes some pr
     :ensure t
     :config
     (global-flycheck-mode))
+#+END_SRC
+
+** Shell
+
+Start up the bash shell as a login shell:
+
+#+BEGIN_SRC emacs-lisp
+  (setq explicit-bash-args '("--noediting" "--rcfile" "~/.bash_profile" "-i"))
 #+END_SRC
 
 ** Programming
@@ -308,6 +321,7 @@ Allow easy testing with pytest:
     (bind-key "C-c f" 'python-pytest-function)
     (bind-key "C-c a" 'python-pytest))
 #+END_SRC
+
 Use iPython for the Python interpreter:
 
 #+BEGIN_SRC emacs-lisp

@@ -17,7 +17,7 @@ __git_ps1 "
 # Aliases
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias e="emacs"
-alias emacs="emacsclient -create-frame --alternate-editor= -nw"
+# alias emacs="emacsclient -create-frame --alternate-editor= -nw"
 alias g="TERM=xterm-256color git"
 alias htop="TERM=xterm-256color htop"
 alias py="python"
@@ -25,7 +25,8 @@ alias v="vim"
 alias vim="echo STOP TYPING THIS!"
 
 # Set editor
-export EDITOR="emacsclient -create-frame --alternate-editor= -nw"
+# export EDITOR="emacsclient -create-frame --alternate-editor= -nw"
+export EDITOR="emacs"
 
 # Host-specific settings
 scotty() {
