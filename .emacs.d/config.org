@@ -97,11 +97,11 @@ Use a fancy font:
   (set-frame-font "Input Mono-13")
 #+END_SRC
 
-Split windows vertically by default:
+Split windows sensibly:
 
 #+BEGIN_SRC emacs-lisp
-  (setq split-width-threshold 0)
   (setq split-height-threshold nil)
+  (setq split-width-threshold 160)
 #+END_SRC
 
 ** Completion and movement
@@ -216,7 +216,8 @@ Use Flycheck. Currently disabled in favor of LSP because Flycheck causes some pr
   (use-package flycheck
     :ensure t
     :config
-    (global-flycheck-mode))
+    (global-flycheck-mode)
+    (setq flycheck-flake8-maximum-line-length 89))
 #+END_SRC
 
 ** Shell
@@ -285,7 +286,9 @@ Use an alterantive Julia repl:
 
 #+BEGIN_SRC emacs-lisp
   (use-package julia-repl
-    :ensure t)
+    :ensure t
+    :config
+    (add-hook 'julia-mode-hook 'julia-repl-mode))
 #+END_SRC
 
 *** Latex
