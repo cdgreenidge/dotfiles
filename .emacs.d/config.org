@@ -18,6 +18,10 @@ Keep all backup and auto-save files in one directory:
 #+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
   (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+  (setq custom-file "~/.emacs.d/custom.el")
+  (unless (file-exists-p custom-file)
+    (write-region "" nil custom-file))
+  (load custom-file)
 #+END_SRC
 
 Make sure our path is the same as the shell's on MacOS:
@@ -339,11 +343,30 @@ Allow easy testing with pytest:
     (bind-key "C-c a" 'python-pytest))
 #+END_SRC
 
+Evaluate code cells with python-x:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package python-x
+    :ensure t
+    :config
+    (python-x-setup)
+    (setq python-section-delimiter "#%%"))
+#+END_SRC
+
 Use iPython for the Python interpreter:
 
 #+BEGIN_SRC emacs-lisp
   (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "--simple-prompt -i")
+#+END_SRC
+
+Integrate Jupyter kernels:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package jupyter
+    :ensure t
+    :config
+    (setq jupyter-repl-echo-eval-p t))
 #+END_SRC
 
 **** TODO Integrate jupyter kernels with https://github.com/dzop/emacs-jupyter

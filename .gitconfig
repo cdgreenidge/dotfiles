@@ -33,30 +33,34 @@
 [user]
 	name = Daniel Greenidge
 	email = dev@danielgreenidge.com
-	signingkey = 5E54080AF79A4FEF
+
 [core]
  	pager = diff-so-fancy | less --tabs=4 -RFX
-	editor = emacs
+	editor = vim
+
+[fetch]
+    prune = true
+
+[push]
+	default = simple
+
 [color]
   diff = auto
   status = auto
   branch = auto
   interactive = auto
-  ui = true
+	ui = true
   pager = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
 [color "diff"]
-	meta = 227
+	meta = 11
 	frag = magenta bold
-	commit = 227 bold
+	commit = yellow bold
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[fetch]
-    prune = true
-[push]
-	default = simple
