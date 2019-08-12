@@ -3,10 +3,15 @@ filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'jupyter-vim/jupyter-vim'
+Plug 'mhinz/vim-signify'
 call plug#end()
+
+" PLUGINS
+let g:signify_vcs_list = [ 'git', ]
 
 " AESTHETICS
 let g:gruvbox_italic='1'
@@ -42,6 +47,7 @@ imap jk <Esc>
 
 " KEYBINDINGS
 let maplocalleader=' '
+nnoremap <leader>f :FZF <CR>
 
 " SYNTAX SPECIFIC
 " Python
