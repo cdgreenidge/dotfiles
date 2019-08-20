@@ -55,7 +55,7 @@ nnoremap <leader>f :FZF <CR>
 
 " SYNTAX SPECIFIC
 " Python
-let g:python3_host_prog = '/Users/cdg4/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 let g:python_host_skip_check=1
 
 " Python or Julia
