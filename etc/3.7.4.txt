@@ -7,10 +7,23 @@
 appnope==0.1.0            # via ipython
 attrs==19.1.0             # via jsonschema
 backcall==0.1.0           # via ipython
+backports.shutil-get-terminal-size==1.0.0  # via spell
 bleach==3.1.0             # via nbconvert
+certifi==2019.6.16        # via requests, sentry-sdk
+chardet==3.0.4            # via requests
+click==7.0                # via spell
+colorama==0.3.9           # via halo, log-symbols
+cursor==1.2.0             # via halo
 decorator==4.4.0          # via ipython, traitlets
 defusedxml==0.6.0         # via nbconvert
 entrypoints==0.3          # via nbconvert
+enum34==1.1.6             # via log-symbols
+future==0.17.1            # via spell
+gitdb2==2.0.5             # via gitpython
+gitpython==2.1.11         # via spell
+halo==0.0.18              # via spell
+idna==2.8                 # via requests
+ipaddress==1.0.22         # via spell
 ipykernel==5.1.2          # via notebook
 ipython-genutils==0.2.0   # via nbformat, notebook, traitlets
 ipython==7.7.0            # via ipykernel
@@ -22,6 +35,7 @@ jupyter-client==5.3.1     # via ipykernel, notebook
 jupyter-core==4.5.0       # via jupyter-client, nbconvert, nbformat, notebook
 jupyterlab-server==1.0.0  # via jupyterlab
 jupyterlab==1.0.5
+log_symbols==0.0.11       # via halo
 markupsafe==1.1.1         # via jinja2
 mistune==0.8.4            # via nbconvert
 nbconvert==5.6.0          # via notebook
@@ -34,18 +48,30 @@ pickleshare==0.7.5        # via ipython
 prometheus-client==0.7.1  # via notebook
 prompt-toolkit==2.0.9     # via ipython
 ptyprocess==0.6.0         # via pexpect, terminado
+pyaml==19.4.1             # via spell
+pycryptodomex==3.8.2      # via spell
 pygments==2.4.2           # via ipython, nbconvert
 pyrsistent==0.15.4        # via jsonschema
-python-dateutil==2.8.0    # via jupyter-client
+python-dateutil==2.8.0    # via jupyter-client, spell
+pyyaml==5.1.2             # via pyaml
 pyzmq==18.1.0             # via jupyter-client, notebook
+requests==2.22.0          # via spell
+requirements-parser==0.2.0  # via spell
 send2trash==1.5.0         # via notebook
-six==1.12.0               # via bleach, jsonschema, prompt-toolkit, pyrsistent, python-dateutil, traitlets
+sentry-sdk==0.11.0        # via spell
+six==1.11.0               # via bleach, halo, jsonschema, prompt-toolkit, pyrsistent, python-dateutil, spell, traitlets
+smmap2==2.0.5             # via gitdb2
+spell==0.30.8
+spinners==0.0.23          # via halo
+tabulate==0.8.3           # via spell
+termcolor==1.1.0          # via halo
 terminado==0.8.2          # via notebook
 testpath==0.4.2           # via nbconvert
 tornado==6.0.3            # via ipykernel, jupyter-client, jupyterlab, notebook, terminado
 traitlets==4.3.2          # via ipykernel, ipython, jupyter-client, jupyter-core, nbconvert, nbformat, notebook
+urllib3==1.25.3           # via requests, sentry-sdk
 wcwidth==0.1.7            # via prompt-toolkit
 webencodings==0.5.1       # via bleach
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools==41.0.1        # via ipython, jsonschema
+# setuptools==41.1.0        # via ipython, jsonschema

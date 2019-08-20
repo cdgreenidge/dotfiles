@@ -1,3 +1,4 @@
 # Requirements file for neovim Python environment
 jupyter
+neovim-remote
 pynvim

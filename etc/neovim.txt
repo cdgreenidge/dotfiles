@@ -28,6 +28,7 @@ mistune==0.8.4            # via nbconvert
 msgpack==0.6.1            # via pynvim
 nbconvert==5.6.0          # via jupyter, notebook
 nbformat==4.4.0           # via ipywidgets, nbconvert, notebook
+neovim-remote==2.1.9
 notebook==6.0.0           # via jupyter, widgetsnbextension
 pandocfilters==1.4.2      # via nbconvert
 parso==0.5.1              # via jedi
@@ -35,6 +36,7 @@ pexpect==4.7.0            # via ipython
 pickleshare==0.7.5        # via ipython
 prometheus-client==0.7.1  # via notebook
 prompt-toolkit==2.0.9     # via ipython, jupyter-console
+psutil==5.6.3             # via neovim-remote
 ptyprocess==0.6.0         # via pexpect, terminado
 pygments==2.4.2           # via ipython, jupyter-console, nbconvert, qtconsole
 pynvim==0.3.2
@@ -53,4 +55,4 @@ webencodings==0.5.1       # via bleach
 widgetsnbextension==3.5.1  # via ipywidgets
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools==41.0.1        # via ipython, jsonschema
+# setuptools==41.1.0        # via ipython, jsonschema, neovim-remote

@@ -7,11 +7,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'jupyter-vim/jupyter-vim'
+Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
+Plug 'psf/black'
 call plug#end()
 
 " PLUGINS
 let g:signify_vcs_list = [ 'git', ]
+let g:vimtex_compiler_progname='nvr'  " Workaround for no --servername support in nvim
+let g:vimtex_view_method='skim'
 
 " AESTHETICS
 let g:gruvbox_italic='1'
@@ -46,7 +50,7 @@ set shiftwidth=0
 imap jk <Esc>
 
 " KEYBINDINGS
-let maplocalleader=' '
+let maplocalleader='\'
 nnoremap <leader>f :FZF <CR>
 
 " SYNTAX SPECIFIC
