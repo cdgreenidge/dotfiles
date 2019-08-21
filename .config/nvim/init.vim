@@ -9,13 +9,18 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'jupyter-vim/jupyter-vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
+Plug 'neomake/neomake'
 Plug 'psf/black'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 " PLUGINS
 let g:signify_vcs_list = [ 'git', ]
 let g:vimtex_compiler_progname='nvr'  " Workaround for no --servername support in nvim
 let g:vimtex_view_method='skim'
+call neomake#configure#automake('w')
+let g:neomake_open_list = 2
+let g:neomake_python_enabled_makers = ['flake8', 'mypy']
 
 " AESTHETICS
 let g:gruvbox_italic='1'
@@ -24,20 +29,13 @@ colorscheme gruvbox
 set cursorline
 set colorcolumn=89
 set diffopt=vertical
+set hlsearch
 set laststatus=2
-set nohlsearch
 set number
 set relativenumber
 set showmatch
 set showtabline=2
 set shortmess=I
-
-" Enable hlsearch only when searching
-augroup vimrc-incsearch-highlight
-  autocmd!
-  autocmd CmdlineEnter /,\? :set hlsearch
-  autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
 
 " EDITING
 set autoread
@@ -52,6 +50,7 @@ imap jk <Esc>
 " KEYBINDINGS
 let maplocalleader='\'
 nnoremap <leader>f :FZF <CR>
+nnoremap <silent> <C-m> :nohlsearch <CR> <C-l>
 
 " SYNTAX SPECIFIC
 " Python
