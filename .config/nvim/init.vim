@@ -6,7 +6,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'jupyter-vim/jupyter-vim'
+Plug 'cdgreenidge/jupyter-vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
@@ -58,6 +58,14 @@ let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
 let g:python_host_skip_check=1
 
 " Python or Julia
+function! NextPythonCell()
+    Pythonx jupyter_vim.to_next_cell()
+endfunction
+
+function! PrevPythonCell()
+    Pythonx jupyter_vim.to_prev_cell()
+endfunction
+
 function SetJupyterKeybindings()
     nnoremap <buffer> <localleader>c :JupyterConnect<CR>
     nnoremap <buffer> <silent> <localleader>r :JupyterRunFile<CR>
@@ -68,6 +76,8 @@ function SetJupyterKeybindings()
     vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
     nnoremap <buffer> <silent> <localleader>u :JupyterUpdateShell<CR>
     nnoremap <buffer> <silent> <localleader>b :PythonSetBreak<CR>
+    nnoremap <buffer> <TAB> :call NextPythonCell()<CR>'
+    nnoremap <buffer> <S-TAB> :call PrevPythonCell()<CR>
 endfunction
 
 augroup julia_or_python
