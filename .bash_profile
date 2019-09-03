@@ -36,19 +36,26 @@ scotty() {
     # Add Rust to Ppath
     export PATH=$HOME/.cargo/bin:$PATH
 
-    # Activate Pyenv
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin:$PATH
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-
     # Activate neovim (not available in conda)
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
 
-    # Activate devtools
-    alias git="PYENV_VERSION=devtools git"
-    alias rg="PYENV_VERSION=devtools rg"
-    alias tmux="PYENV_VERSION=devtools tmux"
+    # Add devtools to path
+    export PATH=$HOME/miniconda3/bin:$PATH
+
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/usr/people/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/usr/people/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/usr/people/cdg4/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/usr/people/cdg4/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 
     # More colors
     alias ls="ls --color"

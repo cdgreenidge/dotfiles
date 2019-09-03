@@ -16,7 +16,7 @@ call plug#end()
 
 " PLUGINS
 let g:signify_vcs_list = [ 'git', ]
-let g:vimtex_compiler_progname='nvr'  " Workaround for no --servername support in nvim
+let g:vimtex_compiler_progname='nvr'  " Workaround for no --servername support
 let g:vimtex_view_method='skim'
 call neomake#configure#automake('w')
 let g:neomake_open_list = 2
@@ -27,7 +27,7 @@ let g:gruvbox_italic='1'
 set termguicolors
 colorscheme gruvbox
 set cursorline
-set colorcolumn=89
+set colorcolumn=80
 set diffopt=vertical
 set hlsearch
 set laststatus=2
@@ -54,7 +54,7 @@ nnoremap <silent> <C-m> :nohlsearch <CR> <C-l>
 
 " SYNTAX SPECIFIC
 " Python
-let g:python3_host_prog = '~/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = '~/miniconda3/bin/python3'
 let g:python_host_skip_check=1
 
 " Python or Julia
