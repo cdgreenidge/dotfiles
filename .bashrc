@@ -51,18 +51,19 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # Random stuff
 export DISENTANGLEMENT_LIB_DATA=/mnt/localscratch/cdg4
-export CUDA_VISIBLE_DEVICES=4
+export OMP_NUM_THREADS=4
+# export CUDA_VISIBLE_DEVICES=4
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/people/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/jukebox/scratch/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/people/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/people/cdg4/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/people/cdg4/miniconda3/bin:$PATH"
+        export PATH="/jukebox/scratch/cdg4/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

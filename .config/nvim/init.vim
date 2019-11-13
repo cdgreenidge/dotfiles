@@ -3,10 +3,11 @@ filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'cdgreenidge/jupyter-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
+Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'cdgreenidge/jupyter-vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
@@ -27,7 +28,7 @@ let g:gruvbox_italic='1'
 set termguicolors
 colorscheme gruvbox
 set cursorline
-set colorcolumn=80
+set colorcolumn=89
 set diffopt=vertical
 set hlsearch
 set laststatus=2
@@ -51,10 +52,15 @@ imap jk <Esc>
 let maplocalleader='\'
 nnoremap <leader>f :FZF <CR>
 nnoremap <silent> <C-m> :nohlsearch <CR> <C-l>
+nnoremap <silent> <leader>n :TestNearest<CR>
+nnoremap <silent> <leader>t :TestFile<CR>
+nnoremap <silent> <leader>s :TestSuite<CR>
+nnoremap <silent> <leader>l :TestLast<CR>
+nnoremap <silent> <leader>v :TestVisit<CR>
 
 " SYNTAX SPECIFIC
 " Python
-let g:python3_host_prog = '~/miniconda3/bin/python3'
+let g:python3_host_prog = '/jukebox/scratch/cdg4/miniconda3/bin/python3'
 let g:python_host_skip_check=1
 
 " Python or Julia

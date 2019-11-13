@@ -18,12 +18,12 @@ pillow() {
     eval "$(pyenv virtualenv-init -)"
 
     # Update PATH for the Google Cloud SDK.
-    if [ -f '/Users/cdg4/google-cloud-sdk/path.bash.inc' ]; then 
+    if [ -f '/Users/cdg4/google-cloud-sdk/path.bash.inc' ]; then
         . '/Users/cdg4/google-cloud-sdk/path.bash.inc'
     fi
 
     # Enable shell completion for gcloud
-    if [ -f '/Users/cdg4/google-cloud-sdk/completion.bash.inc' ]; then 
+    if [ -f '/Users/cdg4/google-cloud-sdk/completion.bash.inc' ]; then
         . '/Users/cdg4/google-cloud-sdk/completion.bash.inc'
     fi
 }
@@ -40,22 +40,9 @@ scotty() {
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
 
     # Add devtools to path
-    export PATH=$HOME/miniconda3/bin:$PATH
+    export PATH=/jukebox/scratch/cdg4/miniconda3/bin:$PATH
 
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/usr/people/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/usr/people/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/usr/people/cdg4/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/usr/people/cdg4/miniconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
+    export PATH=$HOME/bin:$PATH
 
     # More colors
     alias ls="ls --color"
@@ -75,6 +62,9 @@ if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
     scotty
 fi
 if [ $HOSTNAME == "spock.pni.Princeton.EDU" ]; then
+    scotty
+fi
+if [ $HOSTNAME == "spock-login.pni.Princeton.EDU" ]; then
     scotty
 fi
 if [ $HOSTNAME == "pillow-gpu01.pni.princeton.edu" ]; then
