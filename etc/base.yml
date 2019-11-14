@@ -1,0 +1,20 @@
+name: base
+
+channels:
+    - defaults
+    - conda-forge
+
+dependencies:
+    - emacs
+    - git
+    - isort
+    - jupyterlab
+    - nb_conda_kernels
+    - pip
+    - pynvim
+    - ripgrep
+    - tmux
+
+    - pip:
+        - neovim-remote
+        - spell

@@ -343,16 +343,6 @@ Allow easy testing with pytest:
     (bind-key "C-c a" 'python-pytest))
 #+END_SRC
 
-Evaluate code cells with python-x:
-
-#+BEGIN_SRC emacs-lisp
-  (use-package python-x
-    :ensure t
-    :config
-    (python-x-setup)
-    (setq python-section-delimiter "#%%"))
-#+END_SRC
-
 Use iPython for the Python interpreter:
 
 #+BEGIN_SRC emacs-lisp
@@ -369,7 +359,7 @@ Integrate Jupyter kernels:
     (setq jupyter-repl-echo-eval-p t))
 #+END_SRC
 
-**** TODO Integrate jupyter kernels with https://github.com/dzop/emacs-jupyter
+This is from https://github.com/dzop/emacs-jupyter
 
 *** Swift
 
