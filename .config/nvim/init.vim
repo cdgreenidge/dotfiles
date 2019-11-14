@@ -60,7 +60,7 @@ nnoremap <silent> <leader>v :TestVisit<CR>
 
 " SYNTAX SPECIFIC
 " Python
-let g:python3_host_prog = '/jukebox/scratch/cdg4/miniconda3/bin/python3'
+let g:python3_host_prog = '~/miniconda3/bin/python3'
 let g:python_host_skip_check=1
 
 " Python or Julia
