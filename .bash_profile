@@ -1,22 +1,8 @@
 cucumber() {
-    # Add Rust to path
-    export PATH=$HOME/.cargo/bin:$PATH
-
-    # Add Julia to path
-    export PATH=/Applications/JuliaPro-1.1.0.1.app/Contents/Resources/julia/Contents/Resources/julia/bin:$PATH
+    :
 }
 
 pillow() {
-    # Add Julia to path
-    export PATH=/Applications/JuliaPro-1.1.1.1.app/Contents/Resources/julia/Contents/Resources/julia/bin/:$PATH
-
-    # Add Rust to path
-    export PATH=$HOME/.cargo/bin:$PATH
-
-    # Activate Pyenv
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-
     # Update PATH for the Google Cloud SDK.
     if [ -f '/Users/cdg4/google-cloud-sdk/path.bash.inc' ]; then
         . '/Users/cdg4/google-cloud-sdk/path.bash.inc'
@@ -33,19 +19,14 @@ scotty() {
     export PATH=/usr/local/cuda/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
-    # Add Rust to Ppath
-    export PATH=$HOME/.cargo/bin:$PATH
-
     # Activate neovim (not available in conda)
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
 
-    # Add devtools to path
-    export PATH=/jukebox/scratch/cdg4/miniconda3/bin:$PATH
-
-    export PATH=$HOME/bin:$PATH
-
     # More colors
     alias ls="ls --color"
+
+    # Set default permissions
+    umask 002
 
     # Source system bashrc
     if [ -f /etc/bashrc ]; then
@@ -53,6 +34,8 @@ scotty() {
     fi
 }
 
+# Customization for all machines
+export PATH=~/miniconda3/bin:$PATH
 export PATH=~/bin:$PATH
 
 if [ $HOSTNAME == "cucumber" ]; then
@@ -78,3 +61,19 @@ fi
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/cdg4/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/cdg4/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

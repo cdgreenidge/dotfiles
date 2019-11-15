@@ -11,6 +11,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
+Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 Plug 'tpope/vim-unimpaired'
 call plug#end()

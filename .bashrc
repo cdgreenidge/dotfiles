@@ -14,8 +14,6 @@ __git_ps1 "
 
 # Aliases
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias e="emacs"
-# alias emacs="emacsclient -create-frame --alternate-editor= -nw"
 alias g="git"
 alias htop="htop"
 alias py="python"
@@ -28,14 +26,6 @@ set -o vi
 bind '"jk":vi-movement-mode'
 
 # Host-specific settings
-scotty() {
-    umask 002
-    alias ls="ls --color"
-}
-if [ $HOSTNAME = "scotty.pni.Princeton.EDU" ]; then
-    scotty
-fi
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Fasd setup
@@ -50,22 +40,20 @@ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # Random stuff
-export DISENTANGLEMENT_LIB_DATA=/mnt/localscratch/cdg4
 export OMP_NUM_THREADS=4
 # export CUDA_VISIBLE_DEVICES=4
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/jukebox/scratch/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('~/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "~/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "~/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/jukebox/scratch/cdg4/miniconda3/bin:$PATH"
+        export PATH="~/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
