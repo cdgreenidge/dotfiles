@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Updates neovim on systems where we have to manage it manually
+
+latest_tag_url=$(curl -Ls -o /dev/null -w %{url_effective} \
+    https://github.com/neovim/neovim/releases/latest)
+download_url=${latest_tag_url/tag/download}/nvim.appimage
+
+cd ~/local
+rm -rf squashfs-root
+curl -OL $download_url
+chmod u+x nvim.appimage
+./nvim.appimage --appimage-extract
+rm ./nvim.appimage
