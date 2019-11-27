@@ -14,6 +14,7 @@ Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " PLUGINS

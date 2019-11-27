@@ -9,8 +9,10 @@ channels:
     - conda-forge
 
 dependencies:
+    - black
     - git
     - jupyterlab
+    - jupyterlab_code_formatter
     - nb_conda_kernels
     - pip
     - pynvim
