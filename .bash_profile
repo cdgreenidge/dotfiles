@@ -41,8 +41,8 @@ scotty() {
 }
 
 # Customization for all machines
-export PATH=~/miniconda3/bin:$PATH
-export PATH=~/bin:$PATH
+export PATH=$PATH:~/miniconda3/bin
+export PATH=$PATH:~/bin
 
 if [ $HOSTNAME == "cucumber" ]; then
     cucumber
@@ -70,14 +70,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/jukebox/scratch/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/cdg4/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/cdg4/miniconda3/bin:$PATH"
+        export PATH="/jukebox/scratch/cdg4/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
