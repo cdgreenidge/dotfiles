@@ -9,6 +9,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'cdgreenidge/jupyter-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'google/vim-jsonnet'
 Plug 'gruvbox-community/gruvbox'
 Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -18,8 +19,8 @@ Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 " PLUGINS
