@@ -12,6 +12,12 @@ pillow() {
     if [ -f '/Users/cdg4/google-cloud-sdk/completion.bash.inc' ]; then
         . '/Users/cdg4/google-cloud-sdk/completion.bash.inc'
     fi
+    
+    # Add Rust to path
+    export PATH="$HOME/.cargo/bin:$PATH"
+
+    # Add Homebrew to path
+    export PATH="/usr/local/bin:$PATH"
 }
 
 scotty() {
@@ -76,4 +82,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
