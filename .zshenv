@@ -16,4 +16,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH=~/bin:$PATH
+export PATH=$PATH:~/.yadm_submodules/fasd
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/miniconda3/bin

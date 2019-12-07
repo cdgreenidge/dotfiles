@@ -4,3 +4,6 @@
 [submodule ".yadm_submodules/z.lua"]
 	path = .yadm_submodules/z.lua
 	url = https://github.com/skywind3000/z.lua.git
+[submodule ".yadm_submodules/fasd"]
+	path = .yadm_submodules/fasd
+	url = https://github.com/clvv/fasd.git
