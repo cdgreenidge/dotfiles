@@ -29,7 +29,7 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### Added by Zplugin's installer
-source "$HOME/.zplugin/bin/zplugin.zsh"
+source "$HOME/.yadm_submodules/zplugin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
