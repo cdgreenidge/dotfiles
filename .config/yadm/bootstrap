@@ -8,4 +8,4 @@ echo "Init submodules"
 yadm submodule update --recursive --init
 
 # Install fzf
-~/.fzf/install
+~/.yadm_submodules/fzf/install

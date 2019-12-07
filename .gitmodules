@@ -1,3 +1,6 @@
 [submodule ".fzf"]
-	path = .fzf
+	path = .yadm_submodules/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule ".yadm_submodules/z.lua"]
+	path = .yadm_submodules/z.lua
+	url = https://github.com/skywind3000/z.lua.git
