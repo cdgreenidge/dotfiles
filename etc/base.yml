@@ -12,6 +12,7 @@ dependencies:
     - black
     - conda-build
     - git
+    - jsonnet
     - jupyterlab
     - jupyterlab_code_formatter
     - nb_conda_kernels
