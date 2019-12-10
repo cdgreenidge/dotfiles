@@ -43,7 +43,7 @@ scotty() {
 # Customization for all machines
 export PATH=$PATH:~/.yadm_submodules/fasd
 export PATH=$PATH:~/bin
-export PATH=$PATH:~/miniconda3/bin
+export PATH=~/miniconda3/bin:$PATH
 
 if [ $HOSTNAME == "cucumber" ]; then
     cucumber
