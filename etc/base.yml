@@ -12,10 +12,12 @@ dependencies:
     - black
     - conda-build
     - git
+    - ipywidgets
     - jsonnet
     - jupyterlab
     - jupyterlab_code_formatter
     - nb_conda_kernels
+    - nodejs
     - pip
     - pynvim
     - ripgrep
