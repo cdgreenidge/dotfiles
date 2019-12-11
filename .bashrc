@@ -25,7 +25,8 @@ export EDITOR="vim"
 set -o vi
 bind '"jk":vi-movement-mode'
 
-# Enable faseval "$(fasd --init auto)"
+# Enable fasd
+eval "$(fasd --init auto)"
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
@@ -37,7 +38,3 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # Enable fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Random stuff
-export OMP_NUM_THREADS=4
-# export CUDA_VISIBLE_DEVICES=4
