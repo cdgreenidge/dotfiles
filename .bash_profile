@@ -33,11 +33,6 @@ scotty() {
 
     # Set default permissions
     umask 002
-
-    # Source system bashrc
-    if [ -f /etc/bashrc ]; then
-	    . /etc/bashrc
-    fi
 }
 
 if [ $HOSTNAME == "cucumber" ]; then
@@ -59,6 +54,12 @@ if [ $HOSTNAME == "pillow-fcp2014" ]; then
     pillow
 fi
 
+
+# Customization for all machines
+export PATH=~/.yadm_submodules/fasd:$PATH
+export PATH=~/bin:$PATH
+export PATH=~/miniconda3/bin:$PATH
+
 # Source personal bashrc
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
@@ -78,8 +79,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# Customization for all machines
-export PATH=$PATH:~/.yadm_submodules/fasd
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/miniconda3/bin
