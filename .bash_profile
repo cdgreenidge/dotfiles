@@ -59,7 +59,6 @@ fi
 # otherwise miniconda will clobber the devtools in base when changing environments
 export PATH=~/.yadm_submodules/fasd:$PATH
 export PATH=~/bin:$PATH
-export PATH=~/miniconda3/bin:$PATH
 
 export OMP_NUM_THREADS=4  # Don't eat up all cores with linear algebra
 

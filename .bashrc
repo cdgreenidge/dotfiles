@@ -13,6 +13,7 @@ __git_ps1 "
 \\\$ "'
 
 # Aliases
+alias ca="conda activate --stack"
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias g="git"
 alias htop="htop"
