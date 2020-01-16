@@ -1,5 +1,6 @@
-# Be colorful!
+# General settings
 export CLICOLOR=1
+shopt -s extglob
 
 # Prompt
 source ~/bin/git-prompt.sh
