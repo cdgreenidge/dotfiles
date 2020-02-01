@@ -11,6 +11,7 @@ channels:
 dependencies:
     - black
     - conda-build
+    - conan
     - git
     - ipywidgets
     - jsonnet
@@ -20,6 +21,7 @@ dependencies:
     - nodejs
     - pip
     - pynvim
+    - qtconsole
     - ripgrep
     - tmux
 
