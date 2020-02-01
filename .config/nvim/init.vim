@@ -2,10 +2,6 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'cdgreenidge/jupyter-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -50,7 +46,7 @@ let g:gruvbox_italic='1'
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 set termguicolors
-colorscheme nord  " gruvbox
+colorscheme gruvbox  " nord
 set cursorline
 set colorcolumn=89
 set diffopt=vertical
