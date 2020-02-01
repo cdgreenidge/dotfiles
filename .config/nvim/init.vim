@@ -2,6 +2,10 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'cdgreenidge/jupyter-vim'
 Plug 'christoomey/vim-tmux-navigator'
