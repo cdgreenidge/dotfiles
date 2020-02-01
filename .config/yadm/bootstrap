@@ -11,4 +11,4 @@ echo "Installing fzf..."
 ~/.yadm_submodules/fzf/install
 
 echo "Installing modern terminfo database..."
-~/bin/update_terminfo.sh
+~/bin/update-terminfo.sh
