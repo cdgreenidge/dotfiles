@@ -4,8 +4,11 @@
 # be run from within $HOME (assuming this is the root of your dotfiles)
 cd "$HOME"
 
-echo "Init submodules"
+echo "Init submodules..."
 yadm submodule update --recursive --init
 
-# Install fzf
+echo "Installing fzf..."
 ~/.yadm_submodules/fzf/install
+
+echo "Installing modern terminfo database..."
+~/bin/update_terminfo.sh
