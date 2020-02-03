@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+# 
+# This script makes it easier to run the command `jupyter qtconsole` with a remote 
+# kernel. Usually you need to manually copy the kernelspec.json from the remote machine
+# to your local machine, this script does it for you (and sets up the ssh tunneling).
+# 
+# Usage:
+#
+#   1. Install jupyter-qtconsole on the local machine and jupyter-console on the remote.
+#   2. Make sure you can ssh into the remote host without a password using key-based 
+#      auth. Fill in the host variable down in the main block.
+#   3. On the remote machine, execute `jupyter --paths` and put the runtime path in the
+#      remote_jupyter_runtime_dir variable down in the main block.
+#   4. On the remote machine, start a kernel using `jupyter console`. Get the name of
+#      the kernelspec using the %connect_info magic.
+#   5. On the local machine, run e.g. `remote-qtconsole --existing=kernel-131311.json`
+#
+# Potential problems:
+#
+#   1. scp doesn't work because your bashrc executes for shells without login.
+#      Prepend `[ -z "$PS1" ] && return` to your bashrc to fix this.
+#
+# Author: Daniel Greenidge <daniel@danielgreenidge.com>
+#
+import argparse
+import logging
+import pathlib
+import subprocess
+import tempfile
+
+
+logger = logging.getLogger(__name__)
+
+
+def run(
+    host: str, remote_jupyter_runtime_dir: str, remote_kernelspec_name: str
+) -> None:
+    """Copies the remote kernelspec to this machine, and executes the QtConsole.
+
+    The QtConsole will be connected to the remote kernel.
+
+    Args:
+        host: The name of the remote host. Respects your ssh config, so aliases are ok.
+        remote_jupyter_runtime_dir: The absolute path to the runtime dir of the remote
+            jupyter installation.
+        remote_kernelspec_name: The name of the kernelspec, e.g. "kernel-131311.json".
+
+    """
+    # Copy the remote connection.json file to a temporary folder on this machine
+    remote_kernelspec = remote_jupyter_runtime_dir + "/" + remote_kernelspec_name
+    tmpdir = pathlib.Path(tempfile.gettempdir())
+    subprocess.Popen(["scp", "crunch:" + remote_kernelspec, tmpdir])
+    local_kernelspec = tmpdir / remote_kernelspec_name
+    logger.info("Copied remote kernelspec to %s", local_kernelspec)
+
+    subprocess.run(
+        [
+            "jupyter",
+            "qtconsole",
+            "--ConsoleWidget.font_family='Input Mono'",
+            "--ConsoleWidget.font_size=12",
+            "--ConsoleWidget.include_other_output=True",
+            "--existing={}".format(local_kernelspec),
+            "--ssh={}".format(host),
+            "--style=monokai",
+        ]
+    )
+
+
+if __name__ == "__main__":
+    ### YOU MIGHT NEED TO EDIT THESE VARIABLES ###
+    # The remote hostname. Must be able to connect without a password using an ssh key.
+    host = "crunch"
+    # Use jupyter --paths to find this on the remote machine
+    remote_jupyter_runtime_dir = "/mnt/bucket/people/cdg4/.local/share/jupyter/runtime"
+
+    logging.basicConfig(level=logging.INFO)
+
+    parser = argparse.ArgumentParser(description="Connect to a remote qtconsole")
+    parser.add_argument(
+        "--existing",
+        required=True,
+        help="The name of the remote kernel file, from %connect_info",
+    )
+    args = parser.parse_args()
+
+    run(host, remote_jupyter_runtime_dir, args.existing)
