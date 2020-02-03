@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+scontrol show node | \
+    grep CPUAlloc | \
+    tr -d '[A-z|=|/]' | \
+    awk '{alloc += $1; total += $2} \
+        END {printf "%d/%d cores allocated (%.2f%)\n", \
+        alloc, total, 100 * alloc / total}'
