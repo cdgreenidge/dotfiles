@@ -15,6 +15,7 @@ dependencies:
     - git
     - ipywidgets
     - jsonnet
+    - jupyter_console
     - jupyterlab
     - jupyterlab_code_formatter
     - nb_conda_kernels
