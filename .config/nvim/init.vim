@@ -9,8 +9,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'cdgreenidge/jupyter-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'arcticicestudio/nord-vim'
-Plug 'google/vim-jsonnet'
 Plug 'gruvbox-community/gruvbox'
 Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -47,10 +45,8 @@ let g:LanguageClient_diagnosticsEnable=0  " We use flake8 for this
 
 " AESTHETICS
 let g:gruvbox_italic='1'
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
 set termguicolors
-colorscheme gruvbox  " nord
+colorscheme gruvbox
 set cursorline
 set colorcolumn=89
 set diffopt=vertical
@@ -86,6 +82,9 @@ nnoremap <silent> <leader>v :TestVisit<CR>
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 " SYNTAX SPECIFIC
+" Latex
+let g:vimtex_view_method = 'skim'
+
 " Python
 let g:python3_host_prog = '~/miniconda3/bin/python3'
 let g:python_host_skip_check=1
