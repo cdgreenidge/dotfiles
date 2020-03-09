@@ -59,25 +59,9 @@ fi
 # otherwise miniconda will clobber the devtools in base when changing environments
 export PATH=~/.yadm_submodules/fasd:$PATH
 export PATH=~/bin:$PATH
-
 export OMP_NUM_THREADS=4  # Don't eat up all cores with linear algebra
 
 # Source personal bashrc
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/jukebox/scratch/cdg4/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/jukebox/scratch/cdg4/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/jukebox/scratch/cdg4/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
