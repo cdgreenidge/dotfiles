@@ -7,7 +7,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'cdgreenidge/jupyter-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'janko/vim-test'
@@ -84,35 +83,3 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " SYNTAX SPECIFIC
 " Latex
 let g:vimtex_view_method = 'skim'
-
-" Python
-let g:python3_host_prog = '~/miniconda3/bin/python3'
-let g:python_host_skip_check=1
-
-" Python or Julia
-function! NextPythonCell()
-    Pythonx jupyter_vim.to_next_cell()
-endfunction
-
-function! PrevPythonCell()
-    Pythonx jupyter_vim.to_prev_cell()
-endfunction
-
-function SetJupyterKeybindings()
-    nnoremap <buffer> <localleader>c :JupyterConnect<CR>
-    nnoremap <buffer> <silent> <localleader>r :JupyterRunFile<CR>
-    nnoremap <buffer> <silent> <localleader>i :JupyterImportThisFile<CR>
-    nnoremap <buffer> <silent> <localleader>d :JupyterCd %:p:h<CR>
-    nnoremap <buffer> <silent> <localleader>x :JupyterSendCell<CR>
-    nnoremap <buffer> <silent> <localleader>e :JupyterSendRange<CR>
-    vmap     <buffer> <silent> <localleader>e <Plug>JupyterRunVisual
-    nnoremap <buffer> <silent> <localleader>u :JupyterUpdateShell<CR>
-    nnoremap <buffer> <silent> <localleader>b :PythonSetBreak<CR>
-    nnoremap <buffer> <TAB> :call NextPythonCell()<CR>'
-    nnoremap <buffer> <S-TAB> :call PrevPythonCell()<CR>
-endfunction
-
-augroup julia_or_python
-    autocmd!
-    autocmd FileType julia,python call SetJupyterKeybindings()
-augroup END

@@ -12,20 +12,11 @@ dependencies:
     - black
     - conda-build
     - git
-    - ipywidgets
-    - jupyter_console
     - jupyterlab
     - nb_conda_kernels
-    - nodejs
     - pip
-    - pynvim
-    - qtconsole
     - ripgrep
     - tmux
 
     # Fix for https://github.com/conda-forge/rabbitmq-server-feedstock/issues/14
     - conda-forge::ncurses  
-
-    - pip:
-        - neovim-remote
-        - spell
