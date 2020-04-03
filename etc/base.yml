@@ -11,13 +11,10 @@ channels:
 dependencies:
     - black
     - conda-build
-    - conan
     - git
     - ipywidgets
-    - jsonnet
     - jupyter_console
     - jupyterlab
-    - jupyterlab_code_formatter
     - nb_conda_kernels
     - nodejs
     - pip
