@@ -9,10 +9,12 @@ channels:
     - conda-forge
 
 dependencies:
+    - bioconda::nextflow
     - black
     - conda-build
     - git
     - jupyterlab
+    - lazygit
     - nb_conda_kernels
     - pip
     - ripgrep
