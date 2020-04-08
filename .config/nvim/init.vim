@@ -12,6 +12,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
+Plug 'LukeGoodsell/nextflow-vim'
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
@@ -83,3 +84,6 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " SYNTAX SPECIFIC
 " Latex
 let g:vimtex_view_method = 'skim'
+
+" Python
+let g:python3_host_prog = "/Users/cdg4/opt/miniconda3/bin/python"

@@ -10,6 +10,7 @@ channels:
 
 dependencies:
     - bioconda::nextflow
+    - bioconda::java-jdk
     - black
     - conda-build
     - git
@@ -22,3 +23,6 @@ dependencies:
 
     # Fix for https://github.com/conda-forge/rabbitmq-server-feedstock/issues/14
     - conda-forge::ncurses  
+
+    - pip:
+        - neovim

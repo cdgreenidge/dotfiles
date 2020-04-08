@@ -5,6 +5,7 @@ export CLICOLOR=1
 alias ca="conda activate --stack"
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias lg="lazygit"
+alias ls="ls --color"
 alias g="git"
 alias htop="htop"
 alias py="python"
