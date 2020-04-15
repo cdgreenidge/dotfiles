@@ -38,16 +38,10 @@ scotty() {
 if [ $HOSTNAME == "cucumber" ]; then
     cucumber
 fi
-if [ $HOSTNAME == "scotty.pni.Princeton.EDU" ]; then
+if [[ $HOSTNAME == *"pni.princeton.edu"* ]]; then
     scotty
 fi
-if [ $HOSTNAME == "spock.pni.Princeton.EDU" ]; then
-    scotty
-fi
-if [ $HOSTNAME == "spock-login.pni.Princeton.EDU" ]; then
-    scotty
-fi
-if [ $HOSTNAME == "pillow-gpu01.pni.princeton.edu" ]; then
+if [[ $HOSTNAME == *"redshirt"* ]]; then
     scotty
 fi
 if [ $HOSTNAME == "pillow-fcp2014" ]; then
