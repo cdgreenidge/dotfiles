@@ -1,3 +1,5 @@
+shopt -s nocasematch  # Match pni.Princeton.edu, pni.princeton.edu, etc...
+
 cucumber() {
     :
 }
