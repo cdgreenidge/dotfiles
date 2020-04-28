@@ -5,7 +5,7 @@ export CLICOLOR=1
 alias ca="conda activate --stack"
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias lg="lazygit"
-alias ls="ls --color"
+alias ls="ls -G"
 alias g="git"
 alias htop="htop"
 alias py="python"
@@ -40,6 +40,7 @@ autoload -Uz _zplugin
 # Load PURE shell prompt plugin
 zplugin ice pick"async.zsh" src"pure.zsh"
 zplugin light sindresorhus/pure
+zplugin light Tarrasch/zsh-autoenv
 
 # Compose a shell command in vim using <ESC> v
 autoload -U edit-command-line

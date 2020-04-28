@@ -9,8 +9,12 @@ https://github.com/danielmai/.emacs.d/blob/master/config.org
 Map modifier keys on MacOS:
 
 #+BEGIN_SRC emacs-lisp
-  (setq mac-command-modifier 'control)
-  (setq mac-control-modifier 'hyper)
+  (when (eq system-type 'darwin)
+    (setq
+     ns-command-modifier 'control
+     ns-option-modifier 'meta
+     ns-control-modifier 'super
+     ns-function-modifier 'hyper))
 #+END_SRC
 
 Keep all backup and auto-save files in one directory:
@@ -174,7 +178,7 @@ Jump around buffers easily with Avy:
 #+BEGIN_SRC emacs-lisp
   (use-package avy
     :ensure t
-    :bind (("C-;" . 'avy-goto-char) ("C-:" . 'avy-goto-char-2)))
+    :bind (("M-n" . 'avy-goto-char)))
 #+END_SRC
 
 ** Git
@@ -391,9 +395,33 @@ Add Flycheck support. Currently disabled
 
 ** Org Mode
 
+Change the file extension so we can view in Google Drive:
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.org.txt\\'" . org-mode))
+#+END_SRC
+
+Use Org Roam:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-roam
+        :ensure t
+        :hook 
+        (after-init . org-roam-mode)
+        :custom
+        (org-roam-directory "~/drive/wiki")
+        :bind (:map org-roam-mode-map
+                (("C-c n l" . org-roam)
+                 ("C-c n f" . org-roam-find-file)
+                 ("C-c n g" . org-roam-show-graph))
+                :map org-mode-map
+                (("C-c n i" . org-roam-insert))))
+#+END_SRC
+
 Make Org mode prettier:
 
 #+BEGIN_SRC emacs-lisp
+  (setq org-startup-folded "all")
   (setq org-startup-indented t)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   #+END_SRC
