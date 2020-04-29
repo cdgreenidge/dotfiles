@@ -19,3 +19,5 @@ unset __conda_setup
 export PATH=$PATH:~/.yadm_submodules/fasd
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/miniconda3/bin
+
+export WORKON_HOME=~/miniconda3/envs
