@@ -13,6 +13,7 @@ Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
 Plug 'LukeGoodsell/nextflow-vim'
+Plug 'singularityhub/singularity.lang', {'rtp': 'vim/'}
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
