@@ -64,3 +64,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[credential]
+	helper = cache --timeout=7200
