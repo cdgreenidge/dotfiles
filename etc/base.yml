@@ -27,3 +27,4 @@ dependencies:
 
     - pip:
         - neovim
+        - neovim-remote
