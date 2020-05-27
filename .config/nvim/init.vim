@@ -88,7 +88,7 @@ let g:vimtex_view_method = 'skim'
 
 " Python
 if has("mac")
-    let g:python3_host_prog = "/Users/cdg4/opt/miniconda3/bin/python"
+    let g:python3_host_prog = "~/miniconda3/bin/python"
 else
     let g:python3_host_prog = "~/miniconda3/bin/python"
 endif
