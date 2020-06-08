@@ -2,6 +2,7 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'ayu-theme/ayu-vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -13,11 +14,11 @@ Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
 Plug 'LukeGoodsell/nextflow-vim'
-Plug 'singularityhub/singularity.lang', {'rtp': 'vim/'}
+Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -47,7 +48,8 @@ let g:LanguageClient_diagnosticsEnable=0  " We use flake8 for this
 " AESTHETICS
 let g:gruvbox_italic='1'
 set termguicolors
-colorscheme gruvbox
+let ayucolor="mirage"
+colorscheme ayu
 set cursorline
 set colorcolumn=89
 set diffopt=vertical
