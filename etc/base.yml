@@ -9,7 +9,6 @@ channels:
     - conda-forge
 
 dependencies:
-    - bioconda::java-jdk
     - bioconda::nextflow
     - black
     - conda-build
@@ -27,3 +26,4 @@ dependencies:
 
     - pip:
         - neovim
+        - neovim-remote
