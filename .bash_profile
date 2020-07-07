@@ -37,6 +37,20 @@ scotty() {
     umask 002
 }
 
+tiger() {
+    # Load conda
+    module load anaconda3
+
+    # Activate neovim (not available in conda)
+    export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
+
+    # More colors
+    alias ls="ls --color"
+
+    # Set default permissions
+    umask 002
+}
+
 if [ $HOSTNAME == "cucumber" ]; then
     cucumber
 fi
@@ -47,7 +61,7 @@ if [[ $HOSTNAME == *"redshirt"* ]]; then
     scotty
 fi
 if [[ $HOSTNAME == *"tiger"* ]]; then
-    scotty
+    tiger
 fi
 if [ $HOSTNAME == "pillow-fcp2014" ]; then
     pillow
