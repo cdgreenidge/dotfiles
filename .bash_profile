@@ -46,6 +46,9 @@ fi
 if [[ $HOSTNAME == *"redshirt"* ]]; then
     scotty
 fi
+if [[ $HOSTNAME == *"tiger"* ]]; then
+    scotty
+fi
 if [ $HOSTNAME == "pillow-fcp2014" ]; then
     pillow
 fi
