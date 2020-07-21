@@ -4,6 +4,20 @@ cucumber() {
     :
 }
 
+della() {
+    module load anaconda3
+    conda activate --stack default
+
+    # Activate neovim (not available in conda)
+    export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
+
+    # More colors
+    alias ls="ls --color"
+
+    # Set default permissions
+    umask 002
+}
+
 pillow() {
     # Update PATH for the Google Cloud SDK.
     if [ -f '/Users/cdg4/google-cloud-sdk/path.bash.inc' ]; then
@@ -66,6 +80,9 @@ if [[ $HOSTNAME == *"tiger"* ]]; then
 fi
 if [ $HOSTNAME == "pillow-fcp2014" ]; then
     pillow
+fi
+if [[ $HOSTNAME == *"della"* ]]; then
+    della
 fi
 
 # Customization for all machines
