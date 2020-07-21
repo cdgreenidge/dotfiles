@@ -40,6 +40,7 @@ scotty() {
 tiger() {
     # Load conda
     module load anaconda3
+    conda activate --stack default
 
     # Activate neovim (not available in conda)
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
