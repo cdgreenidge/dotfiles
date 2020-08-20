@@ -1,4 +1,4 @@
-name: base
+name: default
 
 # Stuff to install that isn't available on conda, for some reason:
 # - Neovim

@@ -3,10 +3,10 @@ filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ayu-theme/ayu-vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
@@ -89,8 +89,11 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 let g:vimtex_view_method = 'skim'
 
 " Python
+let host = hostname()
 if has("mac")
     let g:python3_host_prog = "~/miniconda3/bin/python"
-else
-    let g:python3_host_prog = "~/miniconda3/bin/python"
+elseif stridx(host, "crunch") != -1
+    let g:python3_host_prog = "/home/cdg4/.conda/envs/default"
+elseif stridx(host, "della") != -1
+    let g:python3_host_prog = "/home/cdg4/.conda/envs/default/bin/python3"
 endif
