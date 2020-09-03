@@ -86,6 +86,7 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 " SYNTAX SPECIFIC
 " Latex
+let g:tex_flavor = "latex"
 let g:vimtex_view_method = 'skim'
 
 " Python
