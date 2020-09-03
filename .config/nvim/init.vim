@@ -8,17 +8,18 @@ Plug 'ayu-theme/ayu-vim'
 "     \ 'do': 'bash install.sh',
 "     \ }
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'LukeGoodsell/nextflow-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
-Plug 'LukeGoodsell/nextflow-vim'
-Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -88,6 +89,9 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Latex
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = 'skim'
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
 
 " Python
 let host = hostname()
