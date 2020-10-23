@@ -2,21 +2,15 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'ayu-theme/ayu-vim'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'LukeGoodsell/nextflow-vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
-Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
@@ -27,24 +21,9 @@ call plug#end()
 
 " PLUGINS
 let g:signify_vcs_list = [ 'git', ]
+let g:vimtex_compiler_method='arara'
 let g:vimtex_compiler_progname='nvr'  " Workaround for no --servername support
 let g:vimtex_view_method='skim'
-call neomake#configure#automake('w')
-let g:neomake_open_list = 2
-let g:neomake_python_enabled_makers = ['flake8', 'mypy']
-
-" LANGUAGE SERVER
-" Required for operations modifying multiple buffers like rename.
-set hidden
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['pyls'],
-    \ }
-let g:LanguageClient_rootMarkers = {                                      
-    \ 'python': ['setup.py']                                          
-    \ }
-let g:LanguageClient_settingsPath='~/.config/nvim/settings.json'
-let g:LanguageClient_diagnosticsEnable=0  " We use flake8 for this
 
 " AESTHETICS
 let g:gruvbox_italic='1'
@@ -63,6 +42,7 @@ set showtabline=2
 set shortmess=I
 
 " EDITING
+set mouse=a
 set autoread
 set nobackup
 set nowritebackup
@@ -72,9 +52,17 @@ set tabstop=4
 set shiftwidth=0
 imap jk <Esc>
 
+" FUNCTIONS
+function ToggleGutter()
+    set number!
+    set relativenumber!
+    execute ':SignifyToggle'
+endfunction
+
 " KEYBINDINGS
 let maplocalleader='\'
 nnoremap <leader>f :FZF <CR>
+nnoremap <leader>ts :call ToggleGutter() <CR>  " Mnemonic: Toggle signs?
 nnoremap <silent> <C-m> :nohlsearch <CR> <C-l>
 nnoremap <silent> <leader>n :TestNearest<CR>
 nnoremap <silent> <leader>t :TestFile<CR>
@@ -89,6 +77,11 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Latex
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = 'skim'
+
+" Start with a remote server to enable backwards search
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
 
 " Markdown
 let g:vim_markdown_folding_disabled = 1
