@@ -1,4 +1,5 @@
 export OMP_NUM_THREADS=4
+export PATH=$PATH:~/.emacs.d/bin
 export PATH=$PATH:~/.yadm_submodules/fasd
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/miniconda3/bin

@@ -21,7 +21,6 @@ call plug#end()
 
 " PLUGINS
 let g:signify_vcs_list = [ 'git', ]
-let g:vimtex_compiler_method='arara'
 let g:vimtex_compiler_progname='nvr'  " Workaround for no --servername support
 let g:vimtex_view_method='skim'
 

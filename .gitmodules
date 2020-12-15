@@ -4,6 +4,6 @@
 [submodule ".yadm_submodules/fasd"]
 	path = .yadm_submodules/fasd
 	url = https://github.com/clvv/fasd.git
-[submodule ".yadm_submodules/zplugin"]
-	path = .yadm_submodules/zplugin
-	url = https://github.com/zdharma/zplugin.git
+[submodule "/Users/cdg4/.yadm_submodules/zinit"]
+	path = /Users/cdg4/.yadm_submodules/zinit
+	url = https://github.com/zdharma/zinit.git

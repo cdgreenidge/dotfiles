@@ -3,19 +3,16 @@ export CLICOLOR=1
 
 # Aliases
 alias ca="conda activate --stack"
-alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias lg="lazygit"
-alias ls="ls -G"
 alias g="git"
-alias htop="htop"
+alias ls="ls -G"
 alias py="python"
 alias v="vim"
 alias vim="nvim"
 
 # Set editor
-export EDITOR="emacs -nw"
-bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -v
+export EDITOR="nvim"
 
 # Enable fasd
 eval "$(fasd --init auto)"
@@ -31,14 +28,13 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 # Enable fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-### Added by Zplugin's installer
-source "$HOME/.yadm_submodules/zplugin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
+### Added by Zinit's installer
+source "$HOME/.yadm_submodules/zinit/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
 
 # Load PURE shell prompt plugin
-zplugin ice pick"async.zsh" src"pure.zsh"
-zplugin light sindresorhus/pure
-zplugin light Tarrasch/zsh-autoenv
-
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+zinit light Tarrasch/zsh-autoenv  # Must be loaded after pure
