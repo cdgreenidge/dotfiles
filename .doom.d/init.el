@@ -181,3 +181,6 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+; This has to go in init.el because it needs to be set before Evil is loaded.
+(setq evil-respect-visual-line-mode t)
