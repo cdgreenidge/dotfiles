@@ -27,12 +27,13 @@
 ;; `load-theme' function. This is the default:
 (setq doom-font (font-spec :name "Triplicate T4c" :size 12 :weight 'regular)
       doom-variable-pitch-font (font-spec :name "Triplicate T4p" :size 13))
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-gruvbox)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/drive/org")
 (setq org-roam-directory "~/drive/org/wiki")
+(setq deft-directory org-roam-directory)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -55,5 +56,12 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Wrap lines in Org mode
 (use-package! visual-fill-column
   :hook (visual-line-mode . visual-fill-column-mode))
+
+;; Open the GTD file with a single key
+(map! :leader
+      (:prefix ("n" . "notes")
+       :desc "Open GTD file" "g" (lambda () (interactive) (find-file "~/drive/org/gtd.org"))))
