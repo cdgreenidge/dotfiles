@@ -17,6 +17,10 @@ set -as terminal-overrides ",xterm-*:RGB"
 set -as terminal-overrides ",tmux-*:RGB"
 set -as terminal-overrides ",screen-*:RGB"
 
+# Point SSH_AUTH_SOCK to a symlink so our ssh keys don't go invalid when we
+# log out and in again
+set-environment -g 'SSH_AUTH_SOCK' ~/.ssh/ssh_auth_sock
+
 # Lower escape timeout to prevent delay
 set -sg escape-time 10
 
