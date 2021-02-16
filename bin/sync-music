@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+rsync -raP ~/Music/iTunes/iTunes\ Media/Music/ ~/drive/personal/reference/music/ --delete
