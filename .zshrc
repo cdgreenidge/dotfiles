@@ -5,7 +5,7 @@ export CLICOLOR=1
 alias ca="conda activate --stack"
 alias g="git"
 alias ls="ls -G"
-alias py="python"
+alias py="python3"
 alias v="vim"
 alias vim="nvim"
 
