@@ -11,7 +11,6 @@ Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
-Plug 'plasticboy/vim-markdown'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
@@ -82,8 +81,6 @@ if empty(v:servername) && exists('*remote_startserver')
   call remote_startserver('VIM')
 endif
 
-" Markdown
-let g:vim_markdown_folding_disabled = 1
 
 " Python
 let host = hostname()
