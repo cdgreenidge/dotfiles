@@ -11,7 +11,7 @@ Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black', { 'branch': 'master' }
 Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -87,7 +87,7 @@ let host = hostname()
 if has("mac")
     let g:python3_host_prog = "~/miniconda3/bin/python"
 elseif stridx(host, "crunch") != -1
-    let g:python3_host_prog = "/home/cdg4/.conda/envs/default"
+    let g:python3_host_prog = "/home/cdg4/miniconda3/bin"
 elseif stridx(host, "della") != -1
     let g:python3_host_prog = "/home/cdg4/.conda/envs/default/bin/python3"
 endif

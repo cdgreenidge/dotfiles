@@ -38,8 +38,7 @@ pillow() {
 
 scotty() {
     # Add CUDA to path
-    export PATH=/usr/local/cuda/bin:$PATH
-    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    module load cudatoolkit/10.1
 
     # Activate neovim (not available in conda)
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH

@@ -21,12 +21,9 @@ dependencies:
     - mamba
     - nb_conda_kernels
     - pip
+    - pynvim
     - ripgrep
     - tmux
 
     # Fix for https://github.com/conda-forge/rabbitmq-server-feedstock/issues/14
     - conda-forge::ncurses
-
-    - pip:
-        - neovim
-        - neovim-remote
