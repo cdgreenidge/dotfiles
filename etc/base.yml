@@ -17,7 +17,6 @@ dependencies:
     - ipywidgets
     - isort
     - jupyterlab
-    - lazygit
     - mamba
     - nb_conda_kernels
     - pip
