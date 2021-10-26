@@ -3,5 +3,6 @@
 # Updates the "della" entry in ~/.ssh/config to have the node ID specified by
 # the first command line argument
 
-sed -n "s/HostName della-.*.princeton.edu/HostName della-$1.princeton.edu/" \
-~/.ssh/config
+sed -i .bak \
+"s/HostName della-.*/HostName della-$1/" \
+~/.ssh/config\#\#os.Darwin
