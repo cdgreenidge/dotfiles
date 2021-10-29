@@ -1,6 +1,11 @@
 # Uncomment for profiling
 # zmodload zsh/zprof
 
+# Set editor. This has to come before everything else so it doesn't clobber keybinds
+# later (e.g., from fzf)
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -v
+
 # System-specific setup
 function della {
     module load anaconda3
@@ -40,20 +45,16 @@ function laptop {
 
 HOST=$(hostname)
 if [[ "$HOST" =~ ".*della.*" ]]; then della; fi
-if [[ "$HOST" =~ "cucumber" ]]; then laptop; fi
+if [[ "$HOST" =~ ".*cucumber.*" ]]; then laptop; fi
 unset CONDA_SHLVL  # fix for https://github.com/conda/conda/issues/9392
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory
-
-# Set editor
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -v
 export EDITOR="nvim"
 
-# Bootstrap and initialize the znap plugin manager
+# Bootstrap and initialize the zit plugin manager
 export ZIT_MODULES_PATH="~/.yadm_submodules"
 ZIT_PATH=~/.yadm_submodules/zit
 [[ -f $ZIT_PATH/zit.zsh ]] ||
@@ -105,10 +106,8 @@ alias py="python3"
 alias v="vim"
 alias vim="nvim"
 
-# Trigger compilation. This should come at the end so ZSh_MODULES_LOADED is correct
+# Trigger compilation. This should come at the end so ZSH_MODULES_LOADED is correct
 source $ZIT_PATH/extras/compile-zsh-files.zsh
 
 # Uncomment for profiling
 # zprof
-
-
