@@ -1,3 +1,4 @@
+setopt no_global_rcs  # Make sure nothing spooky happens
 export OMP_NUM_THREADS=4
 export PATH=$PATH:~/.emacs.d/bin
 export PATH=$PATH:~/.yadm_submodules/fasd
