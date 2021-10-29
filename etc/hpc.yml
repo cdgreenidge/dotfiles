@@ -1,0 +1,33 @@
+name: hpc
+
+# Stuff to install that isn't available on conda, for some reason:
+# - Julia
+# - npm install -g pyright, for Microsoft's Python language server
+
+channels:
+    - conda-forge
+    - defaults
+    - bioconda
+
+dependencies:
+    - bioconda::nextflow
+    - conda-build
+    - mamba
+
+    # Software to make life nicer
+    - fzf
+    - git
+    - ripgrep
+    - tmux
+    - zoxide
+    # Fix for https://github.com/conda-forge/rabbitmq-server-feedstock/issues/14
+    - conda-forge::ncurses
+
+    # Python tooling
+    - black
+    - ipywidgets
+    - isort
+    - jupyterlab
+    - nb_conda_kernels
+    - pip
+    - pynvim

@@ -1,0 +1,24 @@
+name: laptop
+
+# Stuff to install that isn't available on conda, for some reason:
+# - Julia
+# - npm install -g pyright, for Microsoft's Python language server
+
+channels:
+    - conda-forge
+    - defaults
+    - bioconda
+
+dependencies:
+    - bioconda::nextflow
+    - conda-build
+    - mamba
+
+    # Python tooling
+    - black
+    - ipywidgets
+    - isort
+    - jupyterlab
+    - nb_conda_kernels
+    - pip
+    - pynvim
