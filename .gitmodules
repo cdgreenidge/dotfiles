@@ -1,9 +1,0 @@
-[submodule "fzf"]
-	path = .yadm_submodules/fzf
-	url = https://github.com/junegunn/fzf.git
-[submodule "fasd"]
-	path = .yadm_submodules/fasd
-	url = https://github.com/clvv/fasd.git
-[submodule "zinit"]
-	path = .yadm_submodules/zinit
-	url = https://github.com/zdharma/zinit.git

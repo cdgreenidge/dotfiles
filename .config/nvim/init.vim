@@ -3,6 +3,7 @@ filetype plugin indent on
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'LnL7/vim-nix'
 Plug 'LukeGoodsell/nextflow-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -11,6 +12,7 @@ Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-signify'
+Plug 'preservim/vim-pencil'
 Plug 'psf/black', { 'branch': 'master' }
 Plug 'singularityhub/singularity.lang', { 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
