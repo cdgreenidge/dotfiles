@@ -54,8 +54,8 @@ SAVEHIST=100000
 setopt appendhistory
 export EDITOR="nvim"
 
-# Bootstrap and initialize the zit plugin manager
-export ZIT_MODULES_PATH="~/.yadm_submodules"
+# Bootstrap and initialize the znap plugin manager
+export ZIT_MODULES_PATH="$HOME/.yadm_submodules"
 ZIT_PATH=~/.yadm_submodules/zit
 [[ -f $ZIT_PATH/zit.zsh ]] ||
     git clone --depth 1 -- \
