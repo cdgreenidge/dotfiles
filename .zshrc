@@ -4,6 +4,7 @@
 # System-specific setup
 function della {
     module load anaconda3
+    module load julia
     conda activate --stack hpc
 
     # Activate neovim (not available in conda)
