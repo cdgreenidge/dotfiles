@@ -95,4 +95,3 @@ export OMP_NUM_THREADS=4  # Don't eat up all cores with linear algebra
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
-if [ -e /Users/cdg4/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cdg4/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

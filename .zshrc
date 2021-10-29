@@ -1,8 +1,10 @@
 # Uncomment for profiling
 # zmodload zsh/zprof
 
-HISTSIZE=10000
-SAVEHIST=10000
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory
 
 # Set editor
 bindkey -M viins 'jk' vi-cmd-mode
