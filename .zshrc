@@ -1,6 +1,47 @@
 # Uncomment for profiling
 # zmodload zsh/zprof
 
+# System-specific setup
+function della {
+    module load anaconda3
+    conda activate --stack hpc
+
+    # Activate neovim (not available in conda)
+    export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
+
+    # More colors
+    alias ls="ls --color"
+
+    # Set default permissions
+    umask 002
+
+    # Activate fzf
+    FZF_SHELL_PATH="$HOME/.conda/envs/hpc/share/fzf/shell"
+    if [ -n "$FZF_SHELL_PATH/key-bindings.zsh" ]; then
+        source $FZF_SHELL_PATH/key-bindings.zsh
+        source $FZF_SHELL_PATH/completion.zsh
+    fi
+}
+
+function laptop {
+    setopt no_global_rcs  # Make sure nothing spooky happens from Nix global configs
+    # Activate a Nix installation if one exists
+    if [ -e /Users/cdg4/.nix-profile/etc/profile.d/nix.sh ]; then 
+        . /Users/cdg4/.nix-profile/etc/profile.d/nix.sh;
+    fi
+
+    # Activate fzf
+    if [ -n "${commands[fzf-share]}" ]; then
+      source "$(fzf-share)/key-bindings.zsh"
+      source "$(fzf-share)/completion.zsh"
+    fi
+}
+
+HOST=$(hostname)
+if [[ "$HOST" =~ ".*della.*" ]]; then della; fi
+if [[ "$HOST" =~ "cucumber" ]]; then laptop; fi
+unset CONDA_SHLVL  # fix for https://github.com/conda/conda/issues/9392
+
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -53,12 +94,6 @@ else
 	compinit -C;
 fi;
 
-# Activate fzf
-if [ -n "${commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
-
 # Activate zoxide
 eval "$(zoxide init zsh)"
 
@@ -74,3 +109,5 @@ source $ZIT_PATH/extras/compile-zsh-files.zsh
 
 # Uncomment for profiling
 # zprof
+
+
