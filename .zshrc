@@ -12,16 +12,27 @@ bindkey -v
 export EDITOR="nvim"
 
 # Bootstrap and initialize the znap plugin manager
-ZNAP_PATH=~/.yadm_submodules/zsh-snap
-[[ -f $ZNAP_PATH/znap.zsh ]] ||
+export ZIT_MODULES_PATH="~/.yadm_submodules"
+ZIT_PATH=~/.yadm_submodules/zit
+[[ -f $ZIT_PATH/zit.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git $ZNAP_PATH
-source $ZNAP_PATH/znap.zsh
+        https://github.com/thiagokokada/zit.git $ZIT_PATH
+source $ZIT_PATH/zit.zsh
 
 # Load plugins
-znap prompt sindresorhus/pure
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
+zit-install "https://github.com/sindresorhus/pure#main" "pure"
+fpath+=$ZIT_MODULES_PATH/pure
+
+zit-install "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
+zit-load "zsh-autosuggestions" "zsh-autosuggestions.zsh"
+
+zit-install "https://github.com/zsh-users/zsh-syntax-highlighting" \
+"zsh-syntax-highlighting"
+zit-load "zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
+
+# Activate theme
+autoload -U promptinit; promptinit
+prompt pure
 
 # Activate fzf
 if [ -n "${commands[fzf-share]}" ]; then
