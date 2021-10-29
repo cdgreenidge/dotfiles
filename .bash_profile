@@ -1,8 +1,6 @@
-shopt -s nocasematch  # Match pni.Princeton.edu, pni.princeton.edu, etc...
-
 della() {
     module load anaconda3
-    conda activate --stack default
+    conda activate --stack hpc
 
     # Activate neovim (not available in conda)
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
