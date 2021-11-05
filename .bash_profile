@@ -1,6 +1,7 @@
 della() {
     module load anaconda3
     conda activate --stack hpc
+    module load julia
 
     # Activate neovim (not available in conda)
     export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
