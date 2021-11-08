@@ -10,6 +10,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
     [ 
+      pkgs.emacsMacport
       pkgs.fd
       pkgs.fzf
       pkgs.gcc  # Required to compile norg treesitter parser
@@ -47,6 +48,8 @@
   programs.zsh.enableFzfGit = false;
   programs.zsh.promptInit = "";
 
+  services.emacs.enable = true;
+  services.emacs.package = pkgs.emacsMacport;
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;

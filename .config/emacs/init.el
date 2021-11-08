@@ -27,7 +27,7 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
 ;; Use option key as meta
-(setq mac-command-key-is-meta nil)
+(setq mac-option-modifier 'meta)
 
 ;; Store backups in tmp directory
 (setq backup-directory-alist
@@ -68,7 +68,7 @@
 (use-package doom-themes
   :straight t
   :config
-  (load-theme 'doom-one-light t))
+  (load-theme 'doom-one t))
 
 ;;; Navigation
 

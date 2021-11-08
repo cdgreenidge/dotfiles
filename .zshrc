@@ -52,7 +52,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory
-export EDITOR="nvim"
+export EDITOR="emacs"
 
 # Bootstrap and initialize the znap plugin manager
 export ZIT_MODULES_PATH="$HOME/.yadm_submodules"
@@ -99,6 +99,8 @@ fi;
 # Activate zoxide
 eval "$(zoxide init zsh)"
 
+alias emacs="emacsclient --nw"
+alias e="emacs"
 alias ca="conda activate --stack"
 alias g="git"
 alias ls="ls -G"
