@@ -61,9 +61,9 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-screen t)
 
-(set-face-attribute 'default nil :font "Input Mono-11")
+(set-face-attribute 'default nil :font "IBM Plex Mono-11")
 (set-face-attribute 'variable-pitch nil :family "Equity B" :height 1.0)
-(setq-default line-spacing 0.1)
+(setq-default line-spacing 0)
 
 (use-package doom-themes
   :straight t
@@ -125,12 +125,25 @@
   :hook ((LaTeX-mode . TeX-source-correlate-mode)
 	 (LaTeX-mode . visual-line-mode)))
 
+;;; Nix
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 ;;; Org Mode
 (use-package org
   :straight t
   :init
   (setq org-directory "~/drive/org/")
   (setq org-default-notes-file (concat org-directory "notes.org"))
+  (setq org-format-latex-options '(
+				   :foreground default
+				   :background default
+				   :scale 1.0
+				   :html-foreground "Black"
+				   :html-background "Transparent"
+				   :html-scale 1.0
+				   :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  (setq org-latex-create-formula-image-program 'dvisvgm)
   (setq org-startup-indented t)
   (setq org-link-frame-setup '((file . find-file)))  ; Open links in same window
   (setq org-log-done 'time)

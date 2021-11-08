@@ -17,6 +17,7 @@
       pkgs.neovim
       pkgs.pandoc
       pkgs.ripgrep
+      pkgs.texlive.combined.scheme-full
       pkgs.tldr
       pkgs.tmux
       pkgs.tree
