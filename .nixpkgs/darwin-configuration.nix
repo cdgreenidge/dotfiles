@@ -12,6 +12,7 @@
     [ 
       pkgs.fd
       pkgs.fzf
+      pkgs.gcc  # Required to compile norg treesitter parser
       pkgs.neovim
       pkgs.pandoc
       pkgs.ripgrep
@@ -25,8 +26,7 @@
   fonts = {
     enableFontDir = true;
     fonts = [ 
-      pkgs.source-code-pro 
-      pkgs.ibm-plex
+      pkgs.nerdfonts
     ];
   };
 
