@@ -62,13 +62,13 @@
 (setq inhibit-startup-screen t)
 
 (set-face-attribute 'default nil :font "IBM Plex Mono-11")
-(set-face-attribute 'variable-pitch nil :family "Equity B" :height 1.0)
+(set-face-attribute 'variable-pitch nil :family "Times New Roman" :height 1.0)
 (setq-default line-spacing 0)
 
 (use-package doom-themes
   :straight t
   :config
-  (load-theme 'doom-one t))
+  (load-theme 'doom-one-light t))
 
 ;;; Navigation
 

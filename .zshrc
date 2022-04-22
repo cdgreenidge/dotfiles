@@ -31,6 +31,7 @@ function della {
 
 function laptop {
     setopt no_global_rcs  # Make sure nothing spooky happens from Nix global configs
+    
     # Activate a Nix installation if one exists
     if [ -e /Users/cdg4/.nix-profile/etc/profile.d/nix.sh ]; then 
         . /Users/cdg4/.nix-profile/etc/profile.d/nix.sh;
@@ -105,8 +106,6 @@ alias ca="conda activate --stack"
 alias g="git"
 alias ls="ls -G"
 alias py="python3"
-alias v="vim"
-alias vim="nvim"
 
 # Trigger compilation. This should come at the end so ZSH_MODULES_LOADED is correct
 source $ZIT_PATH/extras/compile-zsh-files.zsh
