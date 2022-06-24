@@ -36,7 +36,7 @@ email = dev@danielgreenidge.com
 
 [core]
 pager = diff-so-fancy | less --tabs=4 -RFX
-editor = open -a /Applications/MacPorts/EmacsMac.app
+editor = open -W -a /Applications/MacPorts/EmacsMac.app
 
 [fetch]
 prune = true
