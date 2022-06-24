@@ -44,13 +44,13 @@ Disable cruft:
 Wrap text at 80 characters in prose-heavy modes for a more comfortable reading experience:
 
 #+begin_src emacs-lisp
-      (use-package visual-fill-column
-        :straight t
-        :init
-        (add-hook 'org-mode-hook #'visual-fill-column-mode)
-        (add-hook 'LaTeX-mode-hook #'visual-fill-column-mode)
-        (setq-default fill-column 80)
-        (setq-default visual-fill-column-center-text t))
+  (use-package visual-fill-column
+    :ensure t
+    :init
+    (add-hook 'org-mode-hook #'visual-fill-column-mode)
+    (add-hook 'LaTeX-mode-hook #'visual-fill-column-mode)
+    (setq-default fill-column 80)
+    (setq-default visual-fill-column-center-text t))
 #+end_src
 
 Configure fonts. Note that we set the variable pitch height to =1.2= to make it more comfortable to read. But because the monospaced typeface’s height is set from the variable pitch typeface’s height, we have to set its height to =1 / 1.2 = 0.833= to cancel out the height increase.
@@ -69,7 +69,7 @@ Note: here we're using the font designed for iA Writer, available from [[https:/
 Set color theme:
 
 #+begin_src emacs-lisp
-    (use-package emacs
+  (use-package emacs
     :init
     ;; Add all your customizations prior to loading the themes
     (setq modus-themes-italic-constructs t)
@@ -86,55 +86,48 @@ Set color theme:
 Get incremental minibuffer completion with vertico. For more on the complex use-package declaration, see [[https://github.com/raxod502/straight.el/issues/819#issuecomment-882039946][this Github issue]].
 
 #+begin_src emacs-lisp
-  (straight-use-package '(vertico :files (:defaults "extensions/*")
-				  :includes (vertico-buffer
-					     vertico-directory
-					     vertico-flat
-					     vertico-indexed
-					     vertico-mouse
-					     vertico-quick
-					     vertico-repeat
-					     vertico-reverse)))
-
   (use-package vertico
+    :ensure t
     :init
     (vertico-mode))
-#+end_src
+ #+end_src
 
 Save the minibuffer history over emacs restarts:
 
 #+begin_src emacs-lisp
   (use-package savehist
-  :init
-  (savehist-mode))
+    :ensure t
+    :init
+    (savehist-mode))
 #+end_src
 
 Use an orderless completion style:
 
 #+begin_src emacs-lisp
   (use-package orderless
-  :ensure t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+    :ensure t
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
 
 Annotate minibuffer:
 
 #+begin_src emacs-lisp
   (use-package marginalia
-  :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
-  :init
-  (marginalia-mode))
+    :ensure t
+    :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
+    :init
+    (marginalia-mode))
 #+end_src
 
 Suggest key completions:
 
 #+begin_src emacs-lisp
   (use-package which-key
-  :straight t
-  :config
-  (which-key-mode))
+    :ensure t
+    :config
+    (which-key-mode))
 #+end_src
 
 ** TODO Install =embark= so we can act on minibuffer objects
@@ -148,7 +141,7 @@ See [[https://www.reddit.com/r/emacs/comments/ol2luk/from_ivy_counsel_to_vertico
 Use ace-window to jump around:
 #+begin_src emacs-lisp
   (use-package ace-window
-    :straight t
+    :ensure t
     :config
     (global-set-key (kbd "M-o") 'avy-goto-char)
     (global-set-key (kbd "C-c o") 'ace-window))
@@ -168,6 +161,7 @@ Use Magit
 
 #+begin_src emacs-lisp
   (use-package magit
+    :ensure t
     :bind (("C-x g" . magit-status)))
 #+end_src
 
@@ -189,12 +183,10 @@ Follow links with return:
 Insert pretty em and en dashes while typing:
 
 #+begin_src emacs-lisp
-  (use-package typopunct
-    :straight t
-    :config
-    (typopunct-change-language 'english t)
+  (use-package typo
+    :ensure t
     :hook
-    (org-mode . typopunct-mode))
+    (org-mode . typo-mode))
 #+end_src
 
 Open lists in a snap:
@@ -224,7 +216,7 @@ Install and configure =org-roam=:
 
 #+begin_src emacs-lisp
   (use-package org-roam
-    :straight t
+    :ensure t
     :custom
     (org-roam-directory (file-truename "~/drive/org/slipbox"))
     :bind (("C-c n l" . org-roam-buffer-toggle)
