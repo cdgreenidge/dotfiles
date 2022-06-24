@@ -1,4 +1,4 @@
-name: hpc
+name: hpc2
 
 # Stuff to install that isn't available on conda, for some reason:
 # - Julia
@@ -15,6 +15,7 @@ dependencies:
     - mamba
 
     # Software to make life nicer
+    - emacs
     - fd-find
     - fzf
     - git

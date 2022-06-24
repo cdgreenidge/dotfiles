@@ -24,6 +24,8 @@ alias v="vim"
 alias vim="nvim"
 
 # Set editor
-export EDITOR="vim"
+export EDITOR="emacs"
 set -o vi
 bind '"jk":vi-movement-mode'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
