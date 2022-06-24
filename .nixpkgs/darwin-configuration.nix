@@ -13,8 +13,6 @@
       pkgs.emacsMacport
       pkgs.fd
       pkgs.fzf
-      pkgs.gcc  # Required to compile norg treesitter parser
-      pkgs.neovim
       pkgs.pandoc
       pkgs.ripgrep
       pkgs.texlive.combined.scheme-full
@@ -51,6 +49,7 @@
 
   services.emacs.enable = true;
   services.emacs.package = pkgs.emacsMacport;
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;

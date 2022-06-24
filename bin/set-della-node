@@ -3,6 +3,11 @@
 # Updates the "della" entry in ~/.ssh/config to have the node ID specified by
 # the first command line argument
 
+if [ -z $1 ]; then
+    echo "Node name not provided; making no changes"
+    exit
+fi
+
 sed -i .bak \
 "s/HostName della-.*/HostName della-$1/" \
 ~/.ssh/config\#\#os.Darwin

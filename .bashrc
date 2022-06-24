@@ -1,28 +1,23 @@
-[ -z "$PS1" ] && return  # Skip loading if we're in a non-interactive shell
+# A basic .bashrc file that sets the command prompt to show the current directory,
+# protects the novice bash user from some common pitfalls, and adds color to a few
+# commands.
+#
+# This file has been tested on OS X, Windows (Git Bash), and Linux.
+# It is used at Princeton University (COS 126 and COS 226) and Coursera
+# (Algorithms, Part I and II; Computer Science: Programming with a Purpose).
+#
+# It is distributed via the IntelliJ/Java installer:
+#   https://lift.cs.princeton.edu/java/mac
+#   https://lift.cs.princeton.edu/java/windows
+#   https://lift.cs.princeton.edu/java/linux
 
-# General settings
-export CLICOLOR=1
-shopt -s extglob
+# Written by Kevin Wayne
 
-# Prompt
-source ~/bin/git-prompt.sh
-export GIT_PS1_SHOWCOLORHINTS=true
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_STATESEPARATOR=""
-PROMPT_COMMAND='
-__git_ps1 "
-\e[33m\h\e[0m: \w" "
-\\\$ "'
 
-# Aliases
-alias ca="conda activate --stack"
-alias g="git"
-alias ls="ls -G"
-alias py="python3"
-alias v="vim"
-alias vim="nvim"
+# Set command prompt to show current directory.
+if [ "$TERM" = "xterm-color" ] || [ "$TERM" = "xterm-256color" ]; then
 
+<<<<<<< HEAD
 # Set editor
 export EDITOR="emacs"
 set -o vi
