@@ -36,7 +36,11 @@ email = dev@danielgreenidge.com
 
 [core]
 pager = diff-so-fancy | less --tabs=4 -RFX
-editor = open -a /Applications/MacPorts/EmacsMac.app
+{% if yadm.os == "Darwin" %}
+editor = open -a -W /Applications/MacPorts/EmacsMac.app
+{% else %}
+editor = emacs
+{% endif %}
 
 [fetch]
 prune = true

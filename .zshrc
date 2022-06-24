@@ -65,7 +65,8 @@ fi;
 # Activate zoxide
 eval "$(zoxide init zsh)"
 
-alias e="$EDITOR"
+alias emacs="$EDITOR"
+alias e="emacs"
 alias ca="conda activate --stack"
 alias g="git"
 alias ls="ls -G"
