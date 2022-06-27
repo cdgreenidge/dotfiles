@@ -3,15 +3,13 @@
 
 # Set editor. This has to come before everything else so it doesn't clobber keybinds
 # later (e.g., from fzf)
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -v
+bindkey -e
+EDITOR=emacs
 
 # System-specific setup
-    # Activate fzf
-source /opt/local/share/fzf/shell/key-bindings.zsh
-source /opt/local/share/fzf/shell/completion.zsh
+# Activate fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-EDITOR='open -a /Applications/MacPorts/EmacsMac.app'
 
 unset CONDA_SHLVL  # fix for https://github.com/conda/conda/issues/9392
 
@@ -77,3 +75,4 @@ source $ZIT_PATH/extras/compile-zsh-files.zsh
 
 # Uncomment for profiling
 # zprof
+
