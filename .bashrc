@@ -10,9 +10,10 @@ export GIT_PS1_SHOWCOLORHINTS=true
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_STATESEPARATOR=""
+
 PROMPT_COMMAND='
 __git_ps1 "
-\e[33m\h\e[0m: \w" "
+\e[33m\h\e[0m [$CONDA_DEFAULT_ENV]: \e[34m\]\w\e[m\]" "
 \\\$ "'
 
 # Aliases
