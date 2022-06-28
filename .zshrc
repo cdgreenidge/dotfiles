@@ -4,7 +4,7 @@
 # Set editor. This has to come before everything else so it doesn't clobber keybinds
 # later (e.g., from fzf)
 bindkey -e
-EDITOR=emacs
+EDITOR="emacsclient -nw"
 
 # System-specific setup
 # Activate fzf
@@ -63,8 +63,7 @@ fi;
 # Activate zoxide
 eval "$(zoxide init zsh)"
 
-alias emacs="$EDITOR"
-alias e="emacs"
+alias e=$EDITOR
 alias ca="conda activate --stack"
 alias g="git"
 alias ls="ls -G"

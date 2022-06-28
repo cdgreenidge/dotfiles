@@ -36,7 +36,7 @@ email = dev@danielgreenidge.com
 
 [core]
 pager = diff-so-fancy | less --tabs=4 -RFX
-editor = emacs -nw
+editor = emacsclient
 
 [fetch]
 prune = true

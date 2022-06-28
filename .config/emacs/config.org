@@ -30,6 +30,18 @@ Use option key as meta on MacOS:
     (setq mac-option-modifier 'meta)
 #+end_src
 
+Install Magit:
+
+#+begin_src emacs-lisp
+  (use-package magit
+    :config
+    (require 'git-commit)
+    :bind
+    (("C-x g" . magit-status)
+     ("C-c M-g" . magit-dispatch)
+     ("C-c g" . magit-file-dispatch)))
+#+end_src
+
 * Aesthetics
 
 Disable cruft:
@@ -162,15 +174,6 @@ Open recent files with =C-x X-r=:
   (setq recentf-max-saved-items 64)
 #+end_src
 
-* Git
-
-Use Magit
-
-#+begin_src emacs-lisp
-  (use-package magit
-    :bind (("C-x g" . magit-status)))
-#+end_src
-
 * Org Mode
 
 Automatically start up files with indentation and line wrap:
@@ -189,12 +192,13 @@ Follow links with return:
 Insert pretty em and en dashes while typing:
 
 #+begin_src emacs-lisp
-  (use-package typopunct
-    :straight t
-    :config
-    (typopunct-change-language 'english t)
-    :hook
-    (org-mode . typopunct-mode))
+    (use-package typopunct
+      :straight t
+      :config
+      (typopunct-change-language 'english t)
+      ;; :hook
+      ;; (org-mode . typopunct-mode)
+      )
 #+end_src
 
 Open lists in a snap:

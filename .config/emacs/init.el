@@ -19,7 +19,7 @@
 
 (setq package-enable-at-startup nil)
 (straight-use-package 'use-package)
-(straight-use-package 'org)  ; Keep straight from clobbering built-in org
+(straight-use-package '(org :type built-in))  ; Keep straight from clobbering built-in org
 (setq straight-use-package-by-default t)
 
 ;; Load our config
