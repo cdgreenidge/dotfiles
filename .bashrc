@@ -17,15 +17,17 @@ __git_ps1 "
 
 # Aliases
 alias ca="conda activate --stack"
+alias e="emacsclient -nw"
 alias g="git"
 alias ls="ls -G"
 alias py="python3"
-alias v="vim"
-alias vim="nvim"
 
 # Set editor
-export EDITOR="emacs"
+export EDITOR="emacsclient"
 set -o vi
 bind '"jk":vi-movement-mode'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Start emacs daemon
+(pgrep emacs > /dev/null || emacs --daemon > /dev/null 2>%1 &)

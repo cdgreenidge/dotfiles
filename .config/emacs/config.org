@@ -34,12 +34,12 @@ Install Magit:
 
 #+begin_src emacs-lisp
   (use-package magit
-    :config
-    (require 'git-commit)
     :bind
     (("C-x g" . magit-status)
      ("C-c M-g" . magit-dispatch)
      ("C-c g" . magit-file-dispatch)))
+
+  (require 'git-commit)
 #+end_src
 
 * Aesthetics
