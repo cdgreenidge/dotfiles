@@ -25,7 +25,7 @@ alias py="python3"
 
 # Set editor
 export EDITOR="emacsclient"
-set -o vi
+set -o emacs
 bind '"jk":vi-movement-mode'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
