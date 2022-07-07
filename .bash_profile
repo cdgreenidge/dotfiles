@@ -20,10 +20,21 @@ crunch() {
     CONDA_ENVS_PATH=/scratch/cdg4/conda_envs
     conda activate --stack hpc2
     module load julia
-    module load cudatoolkit/11.2
+    module load cudatoolkit/11.3
 
-    # Activate neovim (not available in conda)
-    export PATH=$HOME/local/squashfs-root/usr/bin:$PATH
+    # More colors
+    alias ls="ls --color"
+
+    # Set default permissions
+    umask 002
+}
+
+tiger() {
+    module load anaconda3/2022.5
+    
+    CONDA_ENVS_PATH=/scratch/gpfs/cdg4/conda_envs
+    conda activate --stack hpc2
+    module load cudatoolkit/11.2
 
     # More colors
     alias ls="ls --color"
@@ -36,6 +47,8 @@ if [[ $HOSTNAME == *"della"* ]]; then
     della
 elif [[ $HOSTNAME == *"pillow-gpu01"* ]]; then
     crunch
+elif [[ $HOSTNAME == *"tiger"* ]]; then
+    tiger
 fi
 
 # Customization for all machines
