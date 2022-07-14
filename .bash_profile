@@ -31,9 +31,8 @@ crunch() {
 
 tiger() {
     module load anaconda3/2022.5
-    
-    CONDA_ENVS_PATH=/scratch/gpfs/cdg4/conda_envs
-    conda activate --stack hpc2
+    CONDA_PKGS_DIRS=/scratch/cdg4/conda/pkgs
+    conda activate --stack hpc
     module load cudatoolkit/11.2
 
     # More colors

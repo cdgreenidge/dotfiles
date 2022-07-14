@@ -1,5 +1,3 @@
 channel_priority: strict
-
-envs_dirs:
-  - /scratch/cdg4/conda_envs
-  - /mnt/localscratch/cdg4/conda
+pkgs_dirs:
+  - /scratch/cdg4/conda/pkgs

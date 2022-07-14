@@ -1,4 +1,4 @@
-name: hpc2
+name: hpc
 
 # Stuff to install that isn't available on conda, for some reason:
 # - Julia
@@ -10,12 +10,11 @@ channels:
     - bioconda
 
 dependencies:
-    - bioconda::nextflow
-    - conda-build
     - mamba
 
     # Software to make life nicer
-    - emacs
+    # Currently emacs is removed because the conda build has a bug
+    # - emacs
     - fd-find
     - fzf
     - git
