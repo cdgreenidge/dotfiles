@@ -20,7 +20,7 @@ crunch() {
     CONDA_ENVS_PATH=/scratch/cdg4/conda_envs
     conda activate --stack hpc2
     module load julia
-    module load cudatoolkit/11.3
+    module load cudatoolkit/11.2
 
     # More colors
     alias ls="ls --color"
