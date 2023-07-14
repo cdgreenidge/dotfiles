@@ -1,0 +1,226 @@
+#+TITLE: Emacs Configuration
+
+* Essentials
+
+Stop Emacs from littering this file with custom variables:
+
+#+begin_src emacs-lisp
+  (setq custom-file (concat user-emacs-directory "custom.el"))
+#+end_src
+
+Store backups in the system temporary file directory:
+
+#+begin_src emacs-lisp
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory )))
+#+end_src
+
+Set the default directory to =”~”=:
+
+#+begin_src emacs-lisp
+  (setq default-directory "~/")
+  (setq command-line-default-directory "~/")
+#+end_src
+
+Use option key as meta on MacOS:
+
+#+begin_src emacs-lisp
+    (setq mac-option-modifier 'meta)
+#+end_src
+
+Install Magit:
+
+#+begin_src emacs-lisp
+  (use-package magit
+    :bind
+    (("C-x g" . magit-status)
+     ("C-c M-g" . magit-dispatch)
+     ("C-c g" . magit-file-dispatch)))
+  (require 'git-commit)
+#+end_src
+
+* Aesthetics
+
+Disable cruft:
+
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1)
+  (setq inhibit-startup-screen t)
+#+end_src
+
+Wrap text at 80 characters in prose-heavy modes for a more comfortable reading experience:
+
+#+begin_src emacs-lisp
+      (use-package visual-fill-column
+        :straight t
+        :init
+        (add-hook 'org-mode-hook #'visual-fill-column-mode)
+        (add-hook 'LaTeX-mode-hook #'visual-fill-column-mode)
+        (setq-default fill-column 80)
+        (setq-default visual-fill-column-center-text t))
+#+end_src
+
+Configure fonts. Note that we set the variable pitch height to =1.2= to make it more comfortable to read. But because the monospaced typeface’s height is set from the variable pitch typeface’s height, we have to set its height to =1 / 1.2 = 0.833= to cancel out the height increase.
+
+#+begin_src emacs-lisp
+  ;; Main typeface
+  (set-face-attribute 'default nil :family "IBM Plex Mono" :height 130)
+  ;; Proportionately spaced typeface
+  (set-face-attribute 'variable-pitch nil :family "Times New Roman" :height 1.2)
+  ;; Monospaced typeface
+  (set-face-attribute 'fixed-pitch nil :family "IBM Plex Mono" :height 1.0)
+#+end_src
+
+Set color theme:
+
+#+begin_src emacs-lisp
+  (use-package emacs
+    :init
+    ;; Add all your customizations prior to loading the themes
+    (setq modus-themes-italic-constructs t)
+    (setq modus-themes-bold-constructs nil)
+    (setq modus-themes-syntax '(alt-syntax yellow-comments green-strings))
+    :config
+    ;; Load the theme of your choice:
+    (load-theme (if (display-graphic-p) 'modus-operandi 'modus-vivendi)) ;; OR (load-theme 'modus-vivendi)
+    :bind ("<f5>" . modus-themes-toggle))
+#+end_src
+
+* Completion Framework
+
+Get incremental minibuffer completion with vertico. For more on the complex use-package declaration, see [[https://github.com/raxod502/straight.el/issues/819#issuecomment-882039946][this Github issue]].
+
+#+begin_src emacs-lisp
+  (straight-use-package '(vertico :files (:defaults "extensions/*")
+				  :includes (vertico-buffer
+					     vertico-directory
+					     vertico-flat
+					     vertico-indexed
+					     vertico-mouse
+					     vertico-quick
+					     vertico-repeat
+					     vertico-reverse)))
+
+  (use-package vertico
+    :init
+    (vertico-mode))
+#+end_src
+
+Save the minibuffer history over emacs restarts:
+
+#+begin_src emacs-lisp
+  (use-package savehist
+  :init
+  (savehist-mode))
+#+end_src
+
+Use an orderless completion style:
+
+#+begin_src emacs-lisp
+  (use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+#+end_src
+
+Annotate minibuffer:
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+  :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
+  :init
+  (marginalia-mode))
+#+end_src
+
+Suggest key completions:
+
+#+begin_src emacs-lisp
+  (use-package which-key
+  :straight t
+  :config
+  (which-key-mode))
+#+end_src
+
+** TODO Install =embark= so we can act on minibuffer objects
+
+See [[https://www.reddit.com/r/emacs/comments/ol2luk/from_ivy_counsel_to_vertico_consult/][this Reddit comment]] for helpful tips from the comment author.
+
+** TODO Install =consult=
+
+* Navigation
+
+Use ace-window to jump around:
+#+begin_src emacs-lisp
+  (use-package ace-window
+    :straight t
+    :config
+    (global-set-key (kbd "M-o") 'avy-goto-char)
+    (global-set-key (kbd "C-c o") 'ace-window))
+#+end_src
+
+Open recent files with =C-x X-r=:
+#+begin_src emacs-lisp
+  (require 'recentf)
+  (global-set-key (kbd "C-x C-r") 'recentf-find-files)
+  (recentf-mode t)
+  (setq recentf-max-saved-items 64)
+#+end_src
+
+* Org Mode
+
+Automatically start up files with indentation and line wrap:
+
+#+begin_src emacs-lisp
+  (setq org-startup-indented t)
+  (add-hook 'org-mode-hook #'visual-line-mode)
+#+end_src
+
+Follow links with return:
+
+#+begin_src emacs-lisp
+  (setq org-return-follows-link t)
+#+end_src
+
+Insert pretty em and en dashes while typing:
+
+#+begin_src emacs-lisp
+    (use-package typopunct
+      :straight t
+      :config
+      (typopunct-change-language 'english t)
+      ;; :hook
+      ;; (org-mode . typopunct-mode)
+      )
+#+end_src
+
+Log time when we close TODO items:
+
+#+begin_src emacs-lisp
+  (setq org-log-done 'time)
+#+end_src
+
+* Org Roam (Reference System)
+
+Install and configure =org-roam=:
+
+#+begin_src emacs-lisp :tangle no
+  (use-package org-roam
+    :straight t
+    :custom
+    (org-roam-directory (file-truename "~/drive/org/slipbox"))
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n g" . org-roam-graph)
+           ("C-c n i" . org-roam-node-insert)
+           ("C-c n c" . org-roam-capture)
+           ;; Dailies
+           ("C-c n j" . org-roam-dailies-capture-today))
+    :config
+    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+    (org-roam-db-autosync-mode))
+#+end_src
