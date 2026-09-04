@@ -1,4 +1,0 @@
-alias ce="chezmoi edit --apply"
-
-# Enable starship prompt
-eval "$(starship init zsh)"
