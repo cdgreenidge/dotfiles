@@ -1,4 +1,4 @@
 font-family = "Monaspace Argon NF Regular"
-font-feature = calt
+font-feature = calt,liga
 font-size = 14
 theme = "Catppuccin Macchiato"
