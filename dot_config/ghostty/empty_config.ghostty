@@ -2,3 +2,4 @@ font-family = "Monaspace Argon NF"
 font-feature = calt,liga
 font-size = 14
 theme = "Catppuccin Macchiato"
+window-padding-x = 4
