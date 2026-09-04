@@ -1,4 +1,6 @@
+export EDITOR="nvim"
 alias ce="chezmoi edit --apply"
+alias v="nvim"
 
 # Enable starship prompt
 eval "$(starship init zsh)"
