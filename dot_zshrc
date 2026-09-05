@@ -41,3 +41,8 @@ zinit snippet OMZL::async_prompt.zsh  # Non-blocking git status in prompt
 zinit snippet OMZL::directories.zsh  # Directory shortcuts
 zinit snippet OMZL::git.zsh  # Git aliases and functions
 zinit snippet OMZL::theme-and-appearance.zsh  # Terminal title & ls colors
+
+# Start Zellij automatically
+if [[ "$TERM_PROGRAM" != "vscode" ]]; then
+    eval "$(zellij setup --generate-auto-start zsh)"
+fi
