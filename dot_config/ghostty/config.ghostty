@@ -1,5 +1,6 @@
 font-family = "Monaspace Argon NF"
 font-feature = calt,liga
 font-size = 14
+macos-option-as-alt = true
 theme = "Catppuccin Macchiato"
 window-padding-x = 10
