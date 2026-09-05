@@ -22,6 +22,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 -- Makes <Tab> insert 'shiftwidth' number of spaces at the start of a line
 vim.opt.smarttab = true
+-- Display vertical ruler at 80 columns
+vim.opt.colorcolumn = 89
 
 -- Colorschemes & Aesthetics
 vim.pack.add({ 
