@@ -21,7 +21,7 @@ vim.opt.smarttab = true
 -- Display vertical ruler at 80 columns
 vim.opt.colorcolumn = "89"
 
--- Colorschemes & Aesthetics
+-- Plugins
 vim.pack.add({ 
     { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
     { 
@@ -29,4 +29,12 @@ vim.pack.add({
         name = "auto-dark-mode" 
     },
 })
-vim.cmd.colorscheme "catppuccin-macchiato"
+
+-- Colorschemes & Aesthetics
+require("catppuccin").setup({
+    background = {
+        light = "latte",
+        dark = "macchiato",
+    }
+})
+vim.cmd.colorscheme "catppuccin"
