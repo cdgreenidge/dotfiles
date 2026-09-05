@@ -1,9 +1,5 @@
 -- Vim Options
 vim.g.mapleader = ","
--- Prevents showing extra messages when using completion
-vim.opt.shortmess:append("c")
--- Sets the height of the command line area at the bottom
-vim.opt.cmdheight = 2
 -- Displays line number for the current line
 vim.opt.number = true
 -- Displays relative line numbers
