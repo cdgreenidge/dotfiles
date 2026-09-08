@@ -8,6 +8,9 @@ eval "$(starship init zsh)"
 # Enable fuzzy finding
 source <(fzf --zsh)
 
+# Enable directory jumping
+eval "$(zoxide init zsh)"
+
 ### Zinit Setup
 ## Begin Zinit installer chunk
 # Install Zinit if it isn't already there
